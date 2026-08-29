@@ -4,7 +4,7 @@ import json, sys, urllib.request, pathlib
 
 prompt_file, out_file = sys.argv[1], sys.argv[2]
 seed = int(sys.argv[3]) if len(sys.argv) > 3 else 0
-base = pathlib.Path("/Users/justinlee/HybridAIWorkshop/execerice")
+base = pathlib.Path(__file__).resolve().parent.parent  # repo root
 prompt = (base / prompt_file).read_text() if not prompt_file.startswith("/") else pathlib.Path(prompt_file).read_text()
 transcript = (base / "transcript-software.txt").read_text()
 
