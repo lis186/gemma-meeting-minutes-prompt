@@ -11,13 +11,13 @@
 
 | 排名 | 錯誤與根因 | (a) 重犯 | (b) 成本 | (c) 規則狀態 | 類型 |
 |---:|---|---|---|---|---|
-| 1 | **金鑰取得者被換成客戶。** 原文是「客戶簽約，否則**我們**拿不到金鑰」，三份摘要都壓成「客戶簽約並取得金鑰」；run3 還把它寫成客戶待辦。[原文](/Users/justinlee/HybridAIWorkshop/execerice/transcript-software.txt:1)、[run1](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run1.md:5)、[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:5)、[run3](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run3.md:16) | **3/3** | **高**：直接錯派責任與依賴 | Prompt 只在時程與待辦局部約束對象，few-shot 又沒示範完整因果鏈，屬結構缺口；生成時壓縮換主詞亦是行為失效 | **混合，偏結構型** |
-| 2 | **待辦覆蓋及拆分不穩。** run1 只剩一列；run2 合併「更新＋重跑」；run3 漏掉獨立更新、重跑，並合併簽約與取得金鑰。[run1](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run1.md:11)、[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:10)、[run3](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run3.md:11) | 嚴格完整性 **3/3** | **高**：可能漏做必要工作 | 已有「一列一個工作」，但 thinking 辨識多項後仍在成稿壓縮；現有 few-shot 未示範待辦表 | **行為型，兼有範例缺口** |
-| 3 | **「最好抓隔天」被遺失。** 只有 run2 保留；run3 thinking 明明已抽到，成稿仍刪除。[run1](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run1.md:17)、[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:21)、[run3 thinking](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run3.think.txt:24) | **2/3** | **高**：可能弱化成當日可交付的印象 | [後說為準規則](/Users/justinlee/HybridAIWorkshop/execerice/prompt-v4.txt:73) 已存在但未觸發 | **行為型** |
+| 1 | **金鑰取得者被換成客戶。** 原文是「客戶簽約，否則**我們**拿不到金鑰」，三份摘要都壓成「客戶簽約並取得金鑰」；run3 還把它寫成客戶待辦。[原文](../transcript-software.txt:1)、[run1](../runs/v4-run1.md:5)、[run2](../runs/v4-run2.md:5)、[run3](../runs/v4-run3.md:16) | **3/3** | **高**：直接錯派責任與依賴 | Prompt 只在時程與待辦局部約束對象，few-shot 又沒示範完整因果鏈，屬結構缺口；生成時壓縮換主詞亦是行為失效 | **混合，偏結構型** |
+| 2 | **待辦覆蓋及拆分不穩。** run1 只剩一列；run2 合併「更新＋重跑」；run3 漏掉獨立更新、重跑，並合併簽約與取得金鑰。[run1](../runs/v4-run1.md:11)、[run2](../runs/v4-run2.md:10)、[run3](../runs/v4-run3.md:11) | 嚴格完整性 **3/3** | **高**：可能漏做必要工作 | 已有「一列一個工作」，但 thinking 辨識多項後仍在成稿壓縮；現有 few-shot 未示範待辦表 | **行為型，兼有範例缺口** |
+| 3 | **「最好抓隔天」被遺失。** 只有 run2 保留；run3 thinking 明明已抽到，成稿仍刪除。[run1](../runs/v4-run1.md:17)、[run2](../runs/v4-run2.md:21)、[run3 thinking](../runs/v4-run3.think.txt:24) | **2/3** | **高**：可能弱化成當日可交付的印象 | [後說為準規則](../prompt-v4.txt:73) 已存在但未觸發 | **行為型** |
 | 4 | **「12 筆全部來自同一間門市」的範圍被弱化。** run2、run3 未明確保存「全部、同一間」。 | **2/3** | 中：可能把單店資料問題誤讀成廣泛故障 | 已有保留數量與影響範圍規則 | **行為型** |
-| 5 | **8/31 對象仍有一次實質錯誤。** run2 加入「客戶」；但三次都沒有再把日期放入客戶簽約期限，這項核心改善成立。[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:24) | **1/3，不過 (a)** | 高 | 「保留原對象」規則已有；few-shot 的「我們／說話方」又與逐字保留要求略有衝突 | **結構＋行為型** |
-| 6 | **`postg` 被刪除。** run2 的正文和名稱清單都沒有該詞。[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:26) | **1/3，不過 (a)** | 中高 | [不得刪除規則](/Users/justinlee/HybridAIWorkshop/execerice/prompt-v4.txt:47) 已有但未觸發 | **行為型** |
-| 7 | **輸出核對過程。** run3 結尾出現 Self-Correction Check。[run3](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run3.md:31) | **1/3，不過 (a)** | 低至中 | 已明文禁止 | **行為型** |
+| 5 | **8/31 對象仍有一次實質錯誤。** run2 加入「客戶」；但三次都沒有再把日期放入客戶簽約期限，這項核心改善成立。[run2](../runs/v4-run2.md:24) | **1/3，不過 (a)** | 高 | 「保留原對象」規則已有；few-shot 的「我們／說話方」又與逐字保留要求略有衝突 | **結構＋行為型** |
+| 6 | **`postg` 被刪除。** run2 的正文和名稱清單都沒有該詞。[run2](../runs/v4-run2.md:26) | **1/3，不過 (a)** | 中高 | [不得刪除規則](../prompt-v4.txt:47) 已有但未觸發 | **行為型** |
+| 7 | **輸出核對過程。** run3 結尾出現 Self-Correction Check。[run3](../runs/v4-run3.md:31) | **1/3，不過 (a)** | 低至中 | 已明文禁止 | **行為型** |
 
 另外，run1 還把「測試環境可先重跑」錯誤耦合到取得正式金鑰之後；但只發生 1/3，不值得單獨加規則。
 

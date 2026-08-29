@@ -70,12 +70,12 @@ flowchart TD
 | 版本 | 修法（每輪只改最高槓桿 1 項） | 關鍵結果（3 seeds） |
 |---|---|---|
 | v1 | 原始 | 8/31 消失 3/3、金牛/postg 未修（還幻覺成 Postgre）、負責人捏造 3/3 |
-| v2 | + 靜默核對清單 | 8/31 出現了，但綁錯事項（掛到客戶簽約期限）——核對只驗「有沒有」，不驗「綁誰」 |
+| v2 | + 靜默核對清單 | 8/31 2/3 出現但綁錯事項（掛到客戶簽約期限）、1/3 仍漏失——核對只驗「有沒有」，不驗「綁誰」 |
 | v3 | 抽象證據綁定取代清單 | 惡化：前提被升格成決議。證明 4B 無法操作抽象規則 |
-| v4 | 固定區段「重要時程／名稱待確認」+ 局部 few-shot | 轉折點：8/31 綁對、可疑名稱開始揭露——結構化輸出勝過抽象規則 |
+| v4 | 固定區段「重要時程／名稱待確認」+ 局部 few-shot | 轉折點：8/31 3/3 不再誤填為簽約期限（事件＋對象全對 2/3）、可疑名稱開始揭露——結構化輸出勝過抽象規則 |
 | v5 | 完整端到端虛構 few-shot | 8/31 綁定 3/3 正確、「12 筆同一門市」3/3 保留；但主體合併 3/3 未解、核對註記反而洩漏 2/3 |
 
-每輪的完整審查（含錯誤定位、thinking 佐證、三關判定）在 `runs/sol-review-v1~v5.md`。
+每輪的完整審查（含錯誤定位、thinking 佐證、三關判定）在 `runs/sol-review-v1~v5.md`；fable 每輪實際改了什麼（含 v2 一次實作偏差被 sol 當場糾正的紀錄）在 `runs/fable-changelog.md`，可用 `diff prompt-vN.txt prompt-vN+1.txt` 逐字驗證。
 
 ## sol 最終判定（第五輪）
 
@@ -95,15 +95,20 @@ lms server start && lms load google/gemma-4-e4b
 
 # 跑一次：參數 = prompt 檔、輸出檔、seed
 python3 runs/run_gemma.py prompt-v5.txt my-run.md 1
+
+# 重現一整版（實驗用 seeds = 1, 2, 3）
+for s in 1 2 3; do python3 runs/run_gemma.py prompt-v5.txt my-run$s.md $s; done
 ```
 
-輸出三個檔：`my-run.md`（會議紀錄）、`my-run.think.txt`（thinking 過程）、`my-run.raw.json`（原始回應）。
+輸出：`my-run.md`（會議紀錄）與 `my-run.raw.json`（原始回應）一定會有；`my-run.think.txt` 只在模型回傳 thinking 時產生。腳本固定連 `localhost:1234`（LM Studio 預設 port，改過的話請調整 `run_gemma.py`）。
 
-**跑審查迴圈**：`runs/sol-review-request-v1~v5.md` 是每輪給審查模型的請求全文，可直接當模板——把檔名換成你的輸出即可。審查模型不限 GPT-5.6 sol，任何比受測模型強得多的模型都行：
+實驗環境：lms CLI（commit 07b7252）、`google/gemma-4-e4b`（本地 6.86 GB 變體）、temperature 0.1、max_tokens 4096。
+
+**跑審查迴圈**：用 `runs/review-template.md`（路徑已是 repo-relative，從 repo root 直接可用）；`runs/sol-review-request-v1~v5.md` 是當時各輪的實際請求，保留原始本機路徑作為歷史紀錄，不建議直接執行。審查模型不限 GPT-5.6 sol，任何比受測模型強得多的模型都行：
 
 ```bash
 codex exec -m gpt-5.6-sol -c model_reasoning_effort=medium -s read-only \
-  --skip-git-repo-check -o review-out.md - < runs/sol-review-request-v5.md
+  --skip-git-repo-check -o review-out.md - < runs/review-template.md
 ```
 
 **套用到你自己的場景**：換掉 `transcript-software.txt`（或改 `run_gemma.py` 第 10 行的檔名）、把驗收標準寫進審查請求，從 v1 重新開始迴圈。
@@ -116,11 +121,18 @@ transcript-software.txt          測試逐字稿（虛構，不可改，刻意�
 runs/
   run_gemma.py                   執行腳本（LM Studio API，temp 0.1，seed 可指定）
   vN-runM.md / .think.txt / .raw.json   第 N 版第 M 個 seed 的輸出／思考／原始回應
-  sol-review-request-vN.md       每輪審查請求全文（可當模板）
-  sol-review-vN.md               每輪審查結果全文
+  review-template.md             可重用的審查請求模板（repo-relative 路徑）
+  sol-review-request-vN.md       每輪審查請求全文（歷史紀錄，含當時本機路徑）
+  sol-review-vN.md               每輪審查結果全文（證據連結已轉 repo-relative）
+  fable-changelog.md             fable 每輪實際修改履歷
 ```
 
 ## 限制
 
 - 結論僅對「這份逐字稿 × gemma-4-e4b」成立；prompt 五輪都針對同一逐字稿調整，未做 held-out 驗證——sol 明確標註「不過度擬合」一項為「設計上成立、尚未驗證」。
 - 3 seeds 是重犯率的最小樣本；正式導入前應以 20–30 份真實會議實測。
+- 完整復現受測方（gemma）與審查方（sol）有紀錄；fable 側的改寫過程以 `runs/fable-changelog.md` 摘要保存，原始對話未含在 repo。
+
+## 授權
+
+MIT（見 [LICENSE](LICENSE)）。
