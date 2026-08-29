@@ -1,0 +1,59 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into a concise, actionable meeting record ready for the team.
+    *   **Constraint 1 (Crucial):** Only use information from the transcript; no external additions.
+    *   **Constraint 2 (Crucial):** Maintain the original quantity, scope, affirmation/negation, conditionality, and uncertainty level.
+    *   **Constraint 3 (Crucial):** Do not confuse suggestions/estimates with conclusions/promises.
+    *   **Constraint 4 (Crucial):** If later dialogue corrects earlier statements, use the latter.
+    *   **Constraint 5 (Formatting):** Specific sections required: Summary, Resolutions, Action Items (Table), Open Issues/Risks.
+    *   **Constraint 6 (Tone):** Professional, objective, no analysis/instructional text.
+
+2.  **Analyze the Transcript (Deconstruction & Key Points Extraction):**
+    *   *Issue:* Client is pressing about the fix timeline. 12 failed transactions found.
+    *   *Root Cause:* All failures are from a newly added trial location. The issue is not the payment function itself, but mismatching store codes/data.
+    *   *Technical Detail:* Postgre uses franchisor codes; Phoenix Pay uses merchant codes established during service application. The current data received is the old version, lacking the new store in the mapping table.
+    *   *Solution Step 1 (Data):* Need to get the client's information and the Golden Cow window to compile/organize the latest version of the store list.
+    *   *Solution Step 2 (Testing):* Update the mapping table, then re-run tests.
+    *   *Prerequisite (Crucial):* Before testing the *formal* environment, the client must sign the formal contract with Equidote Co., Ltd. (額度有限公司). Without this, Phoenix Pay cannot get the formal merchant data and keys.
+    *   *Timeline/Testing:* After signing and getting the formal key, the mapping must be re-run, and testing in the formal environment occurs.
+    *   *Timeline Estimate:* If everything goes smoothly, testing might take about "one breakfast time" (i.e., very fast). If the key is received in the afternoon, testing might be difficult due to closing time.
+    *   *Contract Deadline:* The contract signing/acceptance deadline is August 31st.
+
+3.  **Drafting the Sections (Applying Constraints):**
+
+    *   **## 會議摘要 (Summary - 2 to 4 points, high level):**
+        *   *Focus:* What is the problem, what was found, and what needs to happen next.
+        *   *Drafting:*
+            1.  The 12 failed transactions are traced to a newly added trial location due to mismatched store codes.
+            2.  The current mapping table is outdated; a new, synchronized list must be created.
+            3.  A critical prerequisite for formal testing is the client signing the contract and obtaining the official keys from Equidote Co., Ltd.
+            4.  Once prerequisites are met, testing in the formal environment can proceed.
+
+    *   **## 決議 (Resolutions - Only agreed/finalized items):**
+        *   *Review:* Was anything definitively decided? No. They discussed the problem, the solution path, and timelines/prerequisites, but no action was agreed upon (e.g., "We will fix X by Y date"). The timeline is highly conditional ("If we get the key...").
+        *   *Conclusion:* No clear resolutions. -> "無".
+
+    *   **## 待辦事項 (Action Items - Table format, specific owners/tasks/deadlines):**
+        *   *Review:* Who needs to do what?
+            1.  Task: Get the latest store list/information (Client side). -> Client needs to coordinate with Golden Cow window.
+            2.  Task: Update the mapping table (Our side/Technical). -> After receiving the list, they update it.
+            3.  Task: Sign contract/get keys (Client side). -> Client needs to sign with Equidote.
+        *   *Structuring the Table:*
+            *   Task 1: Client needs to coordinate with Golden Cow window regarding the latest store list. (Owner: Client/Client side)
+            *   Task 2: Sign the formal contract with Equidote Co., Ltd. (Owner: Client/Client side)
+            *   Task 3: Update the mapping table after receiving the latest list. (Owner: Our team/Technical)
+        *   *(Self-Correction on Owners):* The transcript is vague on who does the "coordinating" vs. "signing." I must stick to what is explicitly stated. The most actionable items are the prerequisites and the data gathering.
+
+    *   **## 待確認與風險 (Open Issues/Risks - Undecided, pending verification, blockers):**
+        *   *Review:* What is uncertain?
+            1.  The formal contract signing (Prerequisite).
+            2.  The timeline for receiving the official keys/data.
+            3.  The time needed to successfully test in the formal environment (highly dependent on key arrival/timing).
+        *   *Drafting:* Focus on the dependencies.
+
+4.  **Final Review against Constraints:** (The drafted content looks accurate, constrained, and addresses all parts of the prompt.)
+
+5.  **Generate Output.** (This leads to the final provided response.)

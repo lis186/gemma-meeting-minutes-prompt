@@ -1,0 +1,59 @@
+
+Here's a thinking process to arrive at the desired meeting minutes:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw, unpunctuated transcript into a concise, actionable meeting record.
+    *   **Source Material:** Raw transcription (potential errors, no punctuation).
+    *   **Constraint 1 (Crucial):** Only use information present in the transcript. No external additions.
+    *   **Constraint 2 (Error Correction):** Correct obvious transcription errors based on context (e.g., "postg" -> likely a system/process name, but if the context suggests it's part of the process flow, I must be careful. The example given was "下蛋流程" -> "下單流程").
+    *   **Constraint 3 (Naming/Technical Terms):** If company names, product names, or technical terms are unclear, keep the original transcript text and flag it in "待確認與風險."
+    *   **Output Sections:** Summary (2-4 points), Resolutions, Action Items (Table format: Person | Task | Deadline/Timing), Pending/Risks.
+    *   **Tone/Style:** Professional, concise, actionable.
+
+2.  **Analyze the Transcript (Deconstruction & Interpretation):**
+
+    *   *Context:* A technical issue regarding 12 failed transactions/posts. The system is being tested/integrated with a client (likely using "鳳梨配" - Pineapple Pay).
+    *   *Issue:* The 12 failures are from a new trial location. The problem is not the payment function itself, but that the system lacks the mapping/ID for this new location.
+    *   *Technical Detail:* The client uses a franchise system with its own store codes. Pineapple Pay uses a merchant/store code established during service application. The current system only has the old mapping table, missing this new store.
+    *   *Solution (Immediate):* Need the client's information and the "金牛窗口" (Golden Ox window/contact) to compile the latest store list, update the mapping table, and re-run tests.
+    *   *Prerequisite (Crucial):* Before testing the *formal* environment, the client must sign a formal contract with "額度有限公司" (Credit Limit Co., Ltd.). Without this, they cannot get the formal environment's merchant data and keys.
+    *   *Testing/Timeline:* Once the contract is signed and the formal key is obtained, the mapping must be re-run, and testing in the *formal* environment begins.
+    *   *Timeline/Urgency:* The contract deadline is August 31st (8月31號). Testing in the formal environment might take about "one breakfast time" if everything goes smoothly.
+    *   *Action/Next Step:* The speaker suggests setting a target date for the client to respond to.
+
+3.  **Drafting the Sections (Filtering and Structuring):**
+
+    *   **Terminology Check:**
+        *   "鳳梨配": Product/Client Name (Keep as is).
+        *   "金牛窗口": Contact point/Resource (Keep as is, but maybe clarify its role).
+        *   "額度有限公司": Company Name (Keep as is).
+        *   "門市資料沒有對上": Mapping/ID mismatch (Technical issue).
+
+    *   **## 會議摘要 (Summary):**
+        *   *Focus:* What is the core problem, what was found, and what needs to happen next.
+        *   *Drafting Points:* 12 failures traced to a new trial location due to missing store mapping. Formal testing requires contract signing and keys. Need updated data/coordination to proceed.
+
+    *   **## 決議 (Resolutions):**
+        *   *Focus:* What was definitively agreed upon.
+        *   *Review Transcript for Agreement:* They discussed the process, but no hard decision was made (e.g., "We agree to proceed with X"). The timeline is discussed, but no specific date was set.
+        *   *Conclusion:* No clear resolutions were reached in this segment.
+
+    *   **## 待辦事項 (Action Items):**
+        *   *Focus:* Who does what, when.
+        *   *Action 1 (Immediate):* Get the latest store list from the client/contact.
+        *   *Action 2 (Prerequisite):* Client signs contract with "額度有限公司."
+        *   *Action 3 (Technical):* Update the mapping table and re-run tests.
+        *   *Action 4 (Testing):* Test in the formal environment after keys are obtained.
+
+    *   **## 待確認與風險 (Pending/Risks):**
+        *   *Focus:* Blockers, unknowns, dependencies.
+        *   *Blocker 1:* The formal contract signing (deadline Aug 31st).
+        *   *Blocker 2:* The need for the formal key/data.
+        *   *Blocker 3:* The timeline for testing in the formal environment (dependent on key receipt).
+
+4.  **Refining and Finalizing the Output (Applying Constraints):**
+
+    *   *(Self-Correction during drafting: Ensure I don't promise success. The transcript says "if successful, maybe one breakfast time," which is an estimate, not a guarantee.)*
+
+    *(Proceeding to structure the final output based on the refined drafts.)*

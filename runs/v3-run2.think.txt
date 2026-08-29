@@ -1,0 +1,47 @@
+
+Here's a thinking process to arrive at the desired meeting minutes:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw, unpunctuated transcript into a concise, professional document ready for the team.
+    *   **Source Material:** Raw transcript (potential transcription errors, no punctuation).
+    *   **Constraint 1 (Crucial):** Only use information present in the transcript. No external additions/assumptions.
+    *   **Constraint 2 (Crucial):** Handle transcription errors contextually (e.g., "postg" -> likely a system/process name, but if unclear, keep it or flag).
+    *   **Constraint 3 (Crucial):** Names/Products/Technical Terms: If unsure, keep the original term and flag it in "待確認與風險."
+    *   **Output Sections:** Summary (2-4 points), Resolutions, Action Items (Table format: Owner | Task | Deadline/Timing), Pending/Risks.
+    *   **Tone:** Professional, objective.
+
+2.  **Deconstruct the Transcript (Initial Pass & Information Extraction):**
+    *   *Issue:* Client is pressing about the fix. 12 failed transactions found.
+    *   *Root Cause:* All failures are from a newly added trial location/store. The issue is not the payment function itself, but that the store data didn't match.
+    *   *Technical Detail:* The system uses a franchise model/own store codes (加盟體系自己的門市編號碼). The client's system (鳳梨配) uses a merchant store code established during payment service application. The current data received is the old version, which lacks this new store.
+    *   *Solution/Prerequisite 1 (Immediate):* Need the client to coordinate with Jinniu window to get the latest store list/data, update the comparison table, and then re-run the test.
+    *   *Solution/Prerequisite 2 (Major):* For *formal* environment testing, the client must first sign a formal contract with Egudo Co., Ltd. (額度有限公司). Without this, they cannot get the formal merchant data and keys for Phoenix Pai.
+    *   *Testing/Timeline:* After signing the contract and getting the formal key, the store comparison needs to be re-run in the formal environment. Testing success is required before giving a final timeline.
+    *   *Timeline/Goal:* The contract signing deadline is August 31st (8 月 31 號).
+    *   *Testing Duration Estimate:* If everything goes well, testing in the formal environment might take about "one breakfast time" (a few hours).
+    *   *Action/Next Step:* Can reply to the client that testing can start the day the key is received, but aiming for the next day is safer.
+
+3.  **Refining Terminology and Identifying Ambiguities (Applying Constraints):**
+    *   "鳳梨配" / "金牛窗口": Product/System names. Keep as is, but flag if their exact role isn't clear (though context suggests they are the client/partner systems).
+    *   "額度有限公司": Company name. Keep as is.
+    *   "加盟體系自己的門市編號碼": Describes the system structure.
+    *   "postg": Appears in the transcript but is not clearly defined or actionable. It's part of the technical explanation, but its specific role isn't needed for the high-level minutes unless it becomes a blocker. I will focus on the *actionable* items (getting the list, signing the contract).
+    *   "金鑰": Formal key/credentials.
+
+4.  **Structuring the Output (Drafting the Sections):**
+
+    *   **Summary:** Focus on the core problem, the root cause (data mismatch), and the path forward (contract/key needed for formal testing).
+    *   **Resolutions:** What was agreed upon? (The need to proceed with the contract/key acquisition).
+    *   **Action Items:** Who needs to do what? (Client side actions are dominant).
+    *   **Pending/Risks:** The contract signing, the unknown timeline after signing, and the technical dependency on the keys.
+
+5.  **Review against Constraints (Self-Correction/Final Polish):**
+    *   *Did I add external info?* No.
+    *   *Is the tone professional?* Yes.
+    *   *Are all action items clear and assignable?* Yes, the client/client team is the primary actor.
+    *   *Are flags used for unknowns?* Yes (e.g., the specific technical terms/systems).
+
+**(Self-Correction during drafting):** The transcript doesn't explicitly say "We agree to X." It discusses *prerequisites* and *possibilities*. Therefore, the Resolutions section must be very narrow. The main "resolution" is agreeing on the path forward (signing contract -> getting key -> testing).
+
+6.  **Final Output Generation.** (This leads to the provided good response.)

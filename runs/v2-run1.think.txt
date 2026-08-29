@@ -1,0 +1,52 @@
+
+Here's a thinking process to arrive at the desired meeting minutes:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw, unpunctuated transcript into a concise, professional document ready for the team.
+    *   **Source Material:** Raw transcript (potential transcription errors, no punctuation).
+    *   **Constraint 1 (Crucial):** Only use information from the transcript. No external additions.
+    *   **Constraint 2 (Crucial):** Maintain the original quantity, scope, and degree of certainty/uncertainty.
+    *   **Constraint 3 (Crucial):** Do not confuse suggestions/estimates with conclusions/promises.
+    *   **Constraint 4 (Crucial):** If later dialogue corrects earlier dialogue, use the latter.
+    *   **Constraint 5 (Crucial):** Identify and flag unknown names/terms in "待確認與風險."
+    *   **Output Sections:** 會議摘要 (Summary), 決議 (Decisions), 待辦事項 (Action Items - Table format), 待確認與風險 (Risks/Unknowns).
+
+2.  **Analyze the Transcript (Deconstruction & Interpretation):**
+
+    *   *Context:* A technical issue regarding 12 failed transactions from a new trial location.
+    *   *Problem:* The failure is not the payment function itself, but a mismatch in location/store IDs.
+    *   *Technical Detail:* The franchisor system uses its own store codes; Phoenix Pay uses merchant store IDs established during payment service application. The current data received is the old version, lacking the new store in the mapping table.
+    *   *Solution Step 1 (Immediate):* Need to get the client's information and the Golden Cow window/contact person to compile the latest version of the store list and update the mapping.
+    *   *Solution Step 2 (Testing):* After updating, they can re-run tests in the testing environment.
+    *   *Prerequisite (Crucial):* Before moving to the formal environment, the client *must* sign a formal contract with Equidote Co., Ltd. (額度有限公司).
+    *   *Prerequisite 2:* After signing, they get the formal keys/merchant data.
+    *   *Testing Timeline (Estimate):* If they get the key, testing in the formal environment might take about "one breakfast time" (if successful/quick). The speaker suggests aiming for the day after receipt of the key.
+    *   *Contract Date:* The contract signing deadline is August 31st (8 月 31 號).
+
+3.  **Drafting the Sections (Applying Constraints):**
+
+    *   **會話摘要 (Summary):** Need 2-4 points covering the issue, conclusion, and next steps.
+        *   *Issue:* 12 failed transactions due to mismatch between old/new store ID mapping.
+        *   *Conclusion:* The immediate fix requires updating the mapping table with the latest store list.
+        *   *Next Step/Prerequisite:* Formal testing requires signing a contract and obtaining the formal keys.
+    *   **決議 (Decisions):** Were any binding agreements made? No specific dates or actions were definitively agreed upon, only prerequisites and estimates. (The contract deadline is a fact/constraint, not a decision made in this meeting). -> *Result: 無.*
+    *   **待辦事項 (Action Items):** Who does what?
+        *   *Task 1:* Get the latest store list from the client and compile it with the Golden Cow window contact. (Who is doing this? The speaker/team member who was talking to the client). Let's assume "我們" (we) are doing it, but since no specific name is given for the person compiling/getting the list, I must be cautious. The transcript says: "所以要請客戶那邊的資訊和金牛窗口整理最新版的門市清單然後更新對照後可以再重跑". This sounds like the team needs to coordinate this. Let's use "團隊" or identify the role if possible. Since no specific name is attached to the action, I'll use "未確認" for the person if it involves a general task.
+        *   *Task 2:* Client signs the formal contract with Equidote Co., Ltd. (This is a client action, but it's critical).
+        *   *Refining Action Items:* The most actionable item is the technical update. Let's focus on the prerequisite steps needed to move forward.
+            *   Action 1: Obtain client information and compile the latest store list with the Golden Cow window contact. (Responsible person unclear).
+            *   Action 2: Client signs the formal contract with Equidote Co., Ltd. (Client/Customer).
+    *   **待確認與風險 (Risks/Unknowns):** What is uncertain?
+        *   The current mapping table is old.
+        *   Formal testing timeline (estimate: "one breakfast time" after key receipt).
+        *   The specific names/roles (e.g., "金牛窗口" - Golden Cow window contact).
+        *   The contract signing status/timeline (Deadline: August 31st).
+
+4.  **Final Review against Constraints:**
+    *   *Dates/Numbers:* 12 failed transactions, August 31st contract deadline. (Included).
+    *   *Responsible Parties:* Actions are linked to the team/client, but specific names are missing for some tasks. (Handled with "未確認" or focusing on the action itself).
+    *   *Consistency:* The formal testing prerequisite (contract signing) is clearly stated and maintained.
+    *   *Unknowns:* "金牛窗口" (Golden Cow window) is flagged.
+
+5.  **Structuring the Output.** (Self-Correction: Ensure the tone is professional and objective.)

@@ -1,0 +1,69 @@
+
+Here's a thinking process to arrive at the desired meeting minutes:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into concise, actionable meeting minutes for the team.
+    *   **Source Material:** Raw, unpunctuated transcript (potential transcription errors).
+    *   **Constraint 1 (Error Correction):** Correct obvious transcription errors based on context (e.g., "下蛋流程" -> "下單流程").
+    *   **Constraint 2 (Naming/Product):** If company, product, or person names are unclear, keep the original transcript and flag it in "待確認與風險."
+    *   **Output Sections:** Summary (2-4 points), Resolutions, Action Items (Table: Owner | Task | Deadline/Timing), Pending/Risks.
+    *   **Strict Rules:** No external information added. Do not turn suggestions/estimates into commitments. If later dialogue corrects earlier dialogue, use the latter. All dates/deadlines/numbers must be captured. Owners must be identifiable or marked "未確認."
+
+2.  **Analyze the Transcript (Deconstruction & Interpretation):**
+
+    *   *Context:* A customer is pressing about 12 failed transactions. The issue is identified as a mismatch between the payment system's merchant ID and the franchisor's store IDs.
+    *   *Problem:* The system uses a franchising model ID, but the payment service (鳳梨配) uses an application-based merchant ID. The current mapping table is old and doesn't include the new store, causing transaction failures.
+    *   *Solution/Prerequisites:*
+        1.  Need the customer's side (and Jinniu window) to compile and provide the *latest* version of the store list/mapping.
+        2.  This mapping must be updated and re-run in the test environment.
+        3.  *Crucial Prerequisite:* The customer must first sign the formal contract with "額度有限公司."
+        4.  Only *after* signing and obtaining the formal keys/credentials can they test in the production environment.
+        5.  Testing timeline: If keys are obtained, testing can happen immediately (same day) or ideally the next day.
+    *   *Deadlines/Timelines:*
+        *   Contract signing deadline: August 31st (驗收 - acceptance).
+        *   Testing time (if keys are available): Potentially one breakfast service time (quick).
+    *   *Action Items/Next Steps:*
+        1.  Get the latest store list from the customer side (and Jinniu window).
+        2.  Update the mapping table.
+        3.  Test in the environment (Test/Production).
+
+3.  **Drafting the Output Sections (Applying Constraints):**
+
+    *   **Identify Key Entities/Terms:**
+        *   鳳梨配 (Product/System)
+        *   額度有限公司 (Company/Contractual Entity)
+        *   金牛窗口 (Role/Contact Point)
+        *   門市編號碼 / 商戶門市編號 (IDs/Concepts)
+        *   測試環境 / 正式環境 (Environments)
+
+    *   **## 會議摘要 (Summary):**
+        *   Focus on the core issue, the solution path, and the critical dependency.
+        *   *Drafting Check:* 12 failures due to ID mismatch. Solution requires updated mapping + formal contract/keys. Testing timeline is tight (quick turnaround once keys are available).
+
+    *   **## 決議 (Resolutions):**
+        *   Were any definitive agreements made? No. The discussion focused on prerequisites, timelines, and problems. The signing of the contract is a prerequisite, not a decision made in this meeting.
+        *   *Decision:* None reached regarding the technical fix or timeline commitment.
+
+    *   **## 待辦事項 (Action Items):**
+        *   What needs to be done? Get the list, update the system.
+        *   *Task 1:* Customer side needs to provide the latest store list/information. (Owner: Customer/Jinniu window).
+        *   *Task 2:* Update the mapping table and re-run tests. (Owner: Our side/implied).
+        *   *Refining Owners:* The transcript suggests the customer needs to provide the information, and "we" (the speaker/our team) need to update it. I must be precise about who does what.
+        *   *Actionable Item:* Compile and provide the latest store list/information (Customer side).
+        *   *Actionable Item:* Once keys are obtained, proceed with testing (Our side/implied).
+
+    *   **## 待確認與風險 (Pending/Risks):**
+        *   What is blocking progress? The contract signing and the keys. Also, the specific names/roles mentioned might be unclear.
+        *   *Risk 1:* Formal contract signing with 額度有限公司 (Deadline: Aug 31st).
+        *   *Risk 2:* Obtaining the formal keys/credentials.
+        *   *Risk 3:* The timeline for testing (must be done quickly after key acquisition).
+        *   *Naming Check:* "金牛窗口" is mentioned as a contact point, but its role/availability isn't fully defined for the action item.
+
+4.  **Final Review against Constraints:**
+    *   Dates/Deadlines captured? Yes (Aug 31st, testing timeline).
+    *   Owners identifiable? Yes (Customer/Jinniu window mentioned for providing data).
+    *   Only final version used? Yes.
+    *   Uncertain names flagged? Yes (e.g., the specific role of "金牛窗口" if needed, but I'll keep it focused on the action).
+
+5.  **Generating the Final Output.** (Self-Correction: Ensure the tone is professional and objective.)

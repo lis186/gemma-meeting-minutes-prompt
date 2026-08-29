@@ -1,0 +1,53 @@
+
+Here's a thinking process to arrive at the desired meeting minutes:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw, unpunctuated transcript into a concise, professional document ready for the team.
+    *   **Source Material:** Raw transcript (potential transcription errors, no punctuation).
+    *   **Constraint 1 (Crucial):** Only use information from the transcript. No external additions.
+    *   **Constraint 2 (Crucial):** Maintain the original quantity, scope, affirmation/negation, and uncertainty levels.
+    *   **Constraint 3 (Crucial):** Do not confuse suggestions/estimates with conclusions/promises.
+    *   **Constraint 4 (Crucial):** If later dialogue corrects earlier dialogue, use the latter.
+    *   **Constraint 5 (Crucial):** Identify and flag unknown names/terms in "待確認與風險."
+    *   **Output Sections:** 會議摘要 (Summary), 決議 (Decisions), 待辦事項 (Action Items - Table format), 待確認與風險 (Risks/Unknowns).
+    *   **Tone:** Professional, concise.
+
+2.  **Analyze the Transcript (Deconstruction & Interpretation):**
+
+    *   *Context:* A technical issue regarding 12 failed transactions from a new trial location.
+    *   *Problem:* The failure is not the payment function itself, but a mismatch in location/merchant codes.
+    *   *Technical Detail:* The franchisor uses their own numbering system; the client (鳳梨配) uses a merchant number established during payment service application. The current system has the old version of the mapping table, which doesn't include this new store.
+    *   *Solution Path (Phase 1 - Testing):* Need the client to gather the latest version of the store list/codes from their information window (金牛窗口) and update the mapping table. Then, they can re-run tests in the testing environment.
+    *   *Solution Path (Phase 2 - Production):* Before moving to the production environment, the client *must* sign a formal contract with "額度有限公司." Without this, they cannot get the official merchant data and keys for the production environment.
+    *   *Timeline/Testing:* Once the official key is obtained (after signing), the mapping needs to be re-run, and testing in the production environment begins.
+    *   *Timeline/Estimate:* If everything goes smoothly, testing in the production environment might take about "one breakfast time" (i.e., very fast, maybe next day).
+    *   *Key Dependency:* The official contract signing is the major prerequisite for production testing.
+
+3.  **Drafting the Sections (Applying Constraints):**
+
+    *   **會話摘要 (Summary):** Need 2-4 points covering the issue, conclusion, and next steps.
+        *   *Issue:* 12 failed transactions due to merchant code mismatch (old mapping table vs. new store codes).
+        *   *Conclusion/Prerequisite:* The formal contract signing is mandatory before production testing.
+        *   *Next Step:* Update the mapping table with the latest store codes and proceed through testing environments.
+    *   **決議 (Decisions):** Were any binding decisions made? No specific dates or actions were definitively agreed upon, only prerequisites and estimates. The signing of the contract is a prerequisite, not a decision made *in this meeting*. -> Likely "無."
+    *   **待辦事項 (Action Items):** Who does what?
+        *   Client needs to provide the updated list/codes. (Need a responsible party).
+        *   The team needs to update the mapping table and re-run tests. (Need a responsible party).
+        *   The client needs to sign the contract. (Client/鳳梨配's responsibility).
+        *   *Constraint Check:* The transcript doesn't clearly assign these tasks to specific named individuals/roles, only general groups (Client, Team). I must use "未確認" if no specific person is named.
+    *   **待確認與風險 (Risks/Unknowns):** What is uncertain?
+        *   The official contract signing status (Prerequisite).
+        *   The timeline for obtaining the official key/signing.
+        *   The exact time needed for production testing (estimated as "one breakfast time").
+
+4.  **Refining and Finalizing the Output (Self-Correction/Review against Constraints):**
+
+    *   *Constraint Check 1 (Dates/Numbers):* The contract deadline is August 31st. This must be included if relevant to the action items or risks. (The transcript mentions "our contract is August 31st," implying the deadline for *their* side, which is important context).
+    *   *Constraint Check 2 (Responsible Parties):* The transcript uses general terms ("客戶," "金牛窗口"). I must use these or "未確認."
+    *   *Constraint Check 3 (Later vs. Earlier):* The sequence is clear: Fix mapping -> Sign contract -> Prod Test.
+    *   *Constraint Check 4 (Unknowns):* I must flag the specific names/terms like "鳳梨配," "金牛窗口," and the exact roles involved.
+
+    *(Self-Correction during drafting: The transcript is very focused on prerequisites and dependencies, not action items that can be immediately assigned. I must reflect this dependency structure accurately.)*
+
+5.  **Final Output Generation.** (This leads to the provided good response.)

@@ -1,0 +1,64 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw, unpunctuated transcript into a concise, professional meeting record.
+    *   **Constraint 1 (Source Material):** Only use the transcript; no external information.
+    *   **Constraint 2 (Clarity/Correction):** Correct obvious ASR errors based on context (e.g., "postg" -> likely related to system/data).
+    *   **Constraint 3 (Names/Products):** If names/products are unclear, keep the original transcript and flag them in "待確認與風險."
+    *   **Output Structure:** Must include specific sections (摘要, 決議, 待辦事項, 待確認與風險, 重要時程, 名稱待確認).
+    *   **Tone/Style:** Professional, action-oriented.
+
+2.  **Analyze the Transcript (Deconstruction & Initial Scrubbing):**
+    *   *Key Topic:* Customer issue regarding 12 failed transactions/payments.
+    *   *Root Cause (Initial thought):* The issue is not the payment function itself, but a mismatch in store/merchant IDs.
+    *   *Technical Detail:* The customer uses a franchise system with their own store codes. Phoenix Pay (鳳梨配) uses merchant IDs established during application. The current data received is an old version, lacking the new store/franchise codes.
+    *   *Solution:* Need to get the latest version of the store mapping list from the customer/Jinniu (金牛) window, update it, and re-run.
+    *   *Prerequisite/Bottleneck:* The formal environment testing requires the customer to sign a contract with "額度有限公司" (Edu/Credit Co.). Without this, they don't get the formal merchant data and keys.
+    *   *Testing Timeline/Goal:* Once the key is obtained, mapping needs to be run and tested in the formal environment. If everything goes well, it might take about "one breakfast time" (i.e., quick).
+    *   *Action/Decision Point:* The speaker suggests setting a target date for the formal environment testing.
+
+3.  **Drafting the Sections (Applying Constraints):**
+
+    *   **[重要時程]:** Are there specific dates mentioned?
+        *   "我們的合約是 8 月 31 號要驗收" -> This is a deadline/milestone.
+        *   *Draft:* 8 月 31 日｜我們的合約驗收｜我們/客戶 (Need to clarify who "our" is, but based on the context flow, it's a shared deadline).
+        *   *Refinement:* The transcript says "我們的合約是 8 月 31 號要驗收." I will use this.
+
+    *   **[決議]:** Was anything definitively agreed upon?
+        *   They discussed the root cause and the path forward (get new list, sign contract). They did *not* agree on a specific timeline or accept the current situation as fixed.
+        *   *Conclusion:* No clear decisions made in this segment. -> "無".
+
+    *   **[待辦事項]:** What needs to be done?
+        1.  Get the latest store list/mapping from the customer/Jinniu window. (Action needed).
+        2.  Update the system with this new list. (Action needed).
+        3.  The customer needs to sign the formal contract with "額度有限公司." (Customer action).
+        4.  Once signed/key obtained, run tests in the formal environment. (Action needed).
+        *   *Structuring:* Need to assign responsibility and deadlines. The transcript is vague on who does the updating vs. getting the list, but the speaker suggests *they* (the team) can help with testing once the prerequisites are met.
+        *   *Action 1:* Get the latest store list from the customer/Jinniu window. (Who? The team needs to coordinate this).
+        *   *Action 2:* Customer signs the contract with "額度有限公司." (Customer action).
+        *   *Action 3:* Run tests in the formal environment. (Once prerequisites are met).
+
+    *   **[待確認與風險]:** What is uncertain or blocking progress?
+        1.  The formal contract signing (with "額度有限公司") is a prerequisite for testing the formal environment.
+        2.  The current mismatch (old vs. new store codes) needs resolution via the updated mapping list.
+        3.  The timeline for obtaining the formal key/contract is unknown, which dictates testing start time.
+
+    *   **[會議摘要]:** Synthesize the above points (2-4 bullets).
+        *   Issue: 12 failed transactions due to store code mismatch (old vs. new system).
+        *   Solution Path: Need the latest store mapping list and formal contract/key.
+        *   Prerequisite: Formal testing requires the contract with "額度有限公司."
+
+    *   **[名稱待確認]:** Identify proper nouns/technical terms.
+        *   鳳梨配 (Phoenix Pay) - Product name.
+        *   額度有限公司 - Company name.
+        *   金牛 (Jinniu) - Potentially a system/window reference.
+
+4.  **Review and Refine (Self-Correction against Constraints):**
+    *   *Did I add external info?* No.
+    *   *Are the names flagged?* Yes (鳳梨配, 額度有限公司, 金牛).
+    *   *Is the tone professional?* Yes.
+    *   *Are all constraints met?* Yes, especially the strict separation between "Decision" and "Next Step/Prerequisite."
+
+5.  **Final Polish (Generating the Output).** (This leads to the final provided response.)

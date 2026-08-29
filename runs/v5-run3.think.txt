@@ -1,0 +1,65 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   Role: Meeting Minutes Assistant.
+    *   Goal: Convert raw, unpunctuated transcript into a concise, professional meeting record.
+    *   Constraint 1: Must *only* use information from the transcript; no external additions.
+    *   Constraint 2: Handle ASR errors (e.g., "postg" -> contextually correct term, if clear).
+    *   Constraint 3: Company/Product names unknown to the context must be preserved and flagged ("待確認與風險").
+    *   Output Structure: Specific sections (Summary, Resolutions, Action Items, Risks/Pending, Milestones, Name Verification).
+    *   Crucial Rule: Estimation/Suggestion is *not* a resolution. Only explicit agreement counts as a resolution.
+    *   Crucial Rule: Action Items must be specific, assignable (person/role), and have a deadline/timing.
+
+2.  **Deconstruct the Transcript (Initial Pass & Identification):**
+    *   *Issue:* Client is pressing about why 12 failed transactions occurred.
+    *   *Root Cause:* The new trial store uses a different numbering system (franchise/own codes) than what Phoenix Pay uses when applying for payment services (merchant store code). The current data is old, lacking the new store.
+    *   *Technical Detail:* Both codes refer to the same physical store, but the system doesn't know it.
+    *   *Solution:* Need to get the client's information and Jinniu window (金牛窗口) to compile the latest store list, update the mapping table, and re-run.
+    *   *Prerequisite for Formal Environment:* The client must first sign the formal contract with "額度有限公司" (Edu Company). Without this, they cannot get Phoenix Pay's formal merchant data and keys.
+    *   *Testing/Timeline:* After signing and getting the key, the mapping needs to be re-run in the formal environment. Testing success is required before giving a timeline.
+    *   *Timeline Estimation:* If everything goes well, testing might take "one breakfast time" (a few hours). Safer to allow a day.
+    *   *Action/Decision:* The speaker suggests replying to the client that testing can start upon receiving the key, but recommends allowing a day.
+
+3.  **Refining and Structuring the Output (Drafting Section by Section):**
+
+    *   **Terminology Check:**
+        *   "鳳梨配" (Phoenix Pay) - Product/Company Name.
+        *   "額度有限公司" (Edu Company) - Company Name.
+        *   "金牛窗口" (Jinniu Window) - Role/Entity.
+        *   "postg" -> Contextually, this seems like a system or database term, but it's too vague to confidently correct without risking error. I will keep the description of the issue clear instead of trying to fix "postg."
+        *   "門市資料沒有對上" -> The core issue is the mismatch in store codes.
+
+    *   **## 會議摘要 (Summary):**
+        *   *Issue:* Failed transactions due to store code mismatch.
+        *   *Cause:* New trial store uses a different internal numbering system than the one Phoenix Pay recognizes.
+        *   *Prerequisite:* Formal testing requires signing a contract and obtaining the formal key from "額度有限公司."
+        *   *Next Step:* Need to compile and update the latest store mapping list.
+
+    *   **## 決議 (Resolutions):**
+        *   Was anything explicitly agreed upon? No. The speaker suggested a response ("I can reply to the client..."), but this was advice, not a binding decision. The need for action items is present, but no final agreement on *when* or *how* to proceed has been reached. -> "無".
+
+    *   **## 待辦事項 (Action Items):**
+        *   Task 1: Get the latest store list from the client and Jinniu Window. (Who? Speaker/Team).
+        *   Task 2: Client needs to sign the contract with Edu Company. (Who? Client).
+        *   Task 3: Run tests in the formal environment after key acquisition. (Who? Team/Phoenix Pay).
+
+    *   **## 待確認與風險 (Risks):**
+        *   The formal environment testing depends on the contract signing and key acquisition.
+        *   The timeline for successful testing is highly variable (could be same day, but safer to allow a day).
+
+    *   **## 重要時程 (Milestones):**
+        *   No specific dates were mentioned, only the contract signing deadline ("our contract is August 31st"). This date relates to *their* contract, not the current testing phase.
+        *   "我們的合約是 8 月 31 日要驗收" -> This is a known fact/deadline, not tied to the current action items.
+
+    *   **## 名稱待確認 (Name Verification):**
+        *   Phoenix Pay, Edu Company, Jinniu Window.
+
+4.  **Final Review against Constraints (Self-Correction/Refinement):**
+    *   *Did I add external info?* No.
+    *   *Are the names flagged?* Yes (Phoenix Pay, Edu Company).
+    *   *Is the tone professional?* Yes.
+    *   *Are estimations presented as facts?* No, they are framed as possibilities ("If successful...").
+    *   *Is the structure correct?* Yes.
+
+5.  **Generating the Final Output.** (This leads to the provided good response.)

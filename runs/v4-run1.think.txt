@@ -1,0 +1,78 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw, unpunctuated transcript into a concise, professional meeting record.
+    *   **Constraint 1 (Source Material):** Only use the transcript; no external information.
+    *   **Constraint 2 (Clarity/Correction):** Correct obvious ASR errors based on context (e.g., "postg" -> likely related to system/data).
+    *   **Constraint 3 (Names/Products):** If names/products are unclear, keep the original transcript and flag them in "待確認與風險."
+    *   **Output Sections Required:**
+        *   ## 會議摘要 (2-4 points: main issues, conclusions, limitations/next steps).
+        *   ## 決議 (Only clearly agreed actions; if none, write "無").
+        *   ## 待辦事項 (Table: Responsible Person | Item | Deadline/Timing).
+        *   ## 待確認與風險 (Issues needing resolution or potential blockers).
+        *   ## 重要時程 (Date | Event Description | Target/Subject).
+        *   ## 名稱待確認 (Company names, products, technical terms needing verification - ASR flag required).
+
+2.  **Analyze the Transcript (Deconstruction & Initial Scrubbing):**
+
+    *   *Transcript Snippet:* 客戶又在催什麼時候會好我把 12 筆失敗都查過了全部來自同一間新加入的試用門市不是付款功能整壞掉是門市資料沒有對上什麼叫做門市資料沒有對上你講白話一點就是 postg 用的是加盟體系自己的門市編號碼那鳳梨配用的是申請支付服務時建立商戶門市編號我們目前拿到的是舊版對照表裡面沒有這個新的店所以系統不知道兩個編號其實是同一間門市所以不是去問店長代碼是我們少了最新版的門市對照表所以要請客戶那邊的資訊和金牛窗口整理最新版的門市清單然後更新對照後可以再重跑好我去跟他們要你拿到清單更新完以後什麼時候會好測試環境可以先重跑但是正式環境還有一個前提是什麼你忘了嗎就是客戶要先跟額度有限公司簽那個正式合約啊不然我們拿不到鳳梨配正式環境的商戶資料跟金鑰啊這個我有在吹有金鑰以後呢簽約完拿到正式金鑰之後門市對照要重跑然後在正式環境測試都通過我才敢給上限時間不如你說想押哪一天然後我們回推看看來不來得及我們的合約是 8 月 31 號要驗收重點是你拿到正式金鑰以後門市要跑正式環境測試需要多久樓下就有一間在地美食而且剛好是試用門市喔順利的話可能就是一頓早餐的時間喔喔那我可以跟客戶回覆說拿到金鑰當天我們就可以測試囉最好還是抓隔天啦如果下午才拿到早餐店不就關門了
+
+    *   **Key Issues Identified:**
+        1.  Customer is pressing for resolution/timeline.
+        2.  The 12 failures are from a new trial store.
+        3.  The core issue is mismatching store IDs (franchise system vs. payment service setup).
+        4.  They lack the latest store mapping table/ID list.
+        5.  *Action needed:* Get the updated store list from the client/Jinniu window, update the system, and re-run tests.
+        6.  *Formal Environment Prerequisite:* Client must sign a formal contract with "額度有限公司" to get the official keys/data.
+        7.  *Testing Timeline:* Once the key is obtained, testing in the formal environment depends on how quickly they can run it (optimistically: same day/next day).
+        8.  *Contract Deadline:* The contract validation deadline is August 31st.
+
+3.  **Drafting the Output Sections (Iterative Refinement):**
+
+    *   **## 重要時程:**
+        *   Found: "我們的合約是 8 月 31 號要驗收"
+        *   Draft: 8 月 31 日｜合約驗收期限｜我們/客戶
+        *   (Self-Correction: The transcript uses "我們的合約是 8 月 31 號要驗收," implying the deadline applies to *their* contract validation.)
+
+    *   **## 名稱待確認:**
+        *   Found: "額度有限公司" (Company name)
+        *   Found: "鳳梨配" (Product/System name - used multiple times)
+        *   Found: "金牛窗口" (Role/System? - used once, likely a specific contact point)
+        *   Found: "postg" (Technical term/system - used once, context suggests system data)
+        *   Draft: List these three.
+
+    *   **## 會議摘要:** (Focus on high-level summary)
+        1.  The current failure rate (12 transactions) is due to a mismatch between the store IDs used in the franchise system and those registered with the payment service.
+        2.  To proceed, the team needs the client to provide the latest store mapping list for system update and testing.
+        3.  Formal environment testing is contingent upon the client signing a formal contract with "額度有限公司" to obtain official keys and data.
+        4.  The contract validation deadline is August 31st.
+
+    *   **## 決議:** (Were any actions *agreed upon*? No, they were discussing prerequisites and next steps.)
+        *   Conclusion: 無.
+
+    *   **## 待辦事項:** (Specific, actionable tasks)
+        1.  Task: Get the latest store list from the client and Jinniu window. -> Responsible: (Implied, but not explicitly stated who will *get* it from the client/Jinniu window). Let's assume the speaker group is responsible for coordinating this. Since no specific person/role is named to perform the action, I must be cautious.
+        2.  Task: Update the system with the latest store mapping table. -> Responsible: (Implied, but not explicitly stated).
+        3.  Task: Once the key is obtained and mapping is done, proceed with formal environment testing. -> Responsible: (Implied).
+
+        *Refining the action based on the transcript:* "所以要請客戶那邊的資訊和金牛窗口整理最新版的門市清單然後更新對照後可以再重跑" -> This is a joint effort. I will list the information gathering as the immediate next step.
+
+        *Revised Actionable Item:*
+        *   Action: 請客戶那邊的資訊和金牛窗口整理最新版的門市清單並更新對照。
+        *   Responsible: (No specific person/role named, so I must use "未確認").
+
+    *   **## 待確認與風險:** (Blockers, unknowns)
+        1.  The formal environment testing requires the client to sign a contract and obtain keys first (a major dependency).
+        2.  The timeline for testing in the formal environment is highly dependent on when the key is obtained (optimistically, same day/next day).
+        3.  The current system uses an old mapping table, causing the failures.
+
+4.  **Final Review against Constraints:**
+    *   All information is from the transcript. (Check)
+    *   Tone is professional and objective. (Check)
+    *   Names/Terms are flagged if unclear. (Check: 額度有限公司, 鳳梨配, 金牛窗口, postg)
+    *   Deadlines are accurately placed in "重要時程." (Check: Aug 31st)
+    *   No suggestions are presented as conclusions. (Check)
+
+5.  **Generate Final Output.** (This matches the structure below.)

@@ -1,0 +1,42 @@
+## 第四輪結論
+
+**v4 有實質進步，但仍不可直接作為正式商務紀錄。** 它已解決最危險的「8/31 填到客戶簽約期限」及「前提升格為決議」，但責任主體、待辦完整性及最後時程修正仍不穩定。
+
+先行標記需修正兩點：
+
+- 並非 3/3 都精確寫成「8 月 31 日｜我們的合約驗收｜我們」。run2 是「我們／客戶」，run3 是「我們／說話方」。其中 run2 無依據地加入客戶，屬實質錯誤；run3 則是照 few-shot 的寫法，語意尚安全。
+- 「決議升格」確實消失；但依前兩輪採用的判準，「好，我去跟他們要」仍是明確行動承諾，因此 3/3「無」可能是反向過度修正。
+
+## 錯誤、根因與三關
+
+| 排名 | 錯誤與根因 | (a) 重犯 | (b) 成本 | (c) 規則狀態 | 類型 |
+|---:|---|---|---|---|---|
+| 1 | **金鑰取得者被換成客戶。** 原文是「客戶簽約，否則**我們**拿不到金鑰」，三份摘要都壓成「客戶簽約並取得金鑰」；run3 還把它寫成客戶待辦。[原文](/Users/justinlee/HybridAIWorkshop/execerice/transcript-software.txt:1)、[run1](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run1.md:5)、[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:5)、[run3](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run3.md:16) | **3/3** | **高**：直接錯派責任與依賴 | Prompt 只在時程與待辦局部約束對象，few-shot 又沒示範完整因果鏈，屬結構缺口；生成時壓縮換主詞亦是行為失效 | **混合，偏結構型** |
+| 2 | **待辦覆蓋及拆分不穩。** run1 只剩一列；run2 合併「更新＋重跑」；run3 漏掉獨立更新、重跑，並合併簽約與取得金鑰。[run1](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run1.md:11)、[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:10)、[run3](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run3.md:11) | 嚴格完整性 **3/3** | **高**：可能漏做必要工作 | 已有「一列一個工作」，但 thinking 辨識多項後仍在成稿壓縮；現有 few-shot 未示範待辦表 | **行為型，兼有範例缺口** |
+| 3 | **「最好抓隔天」被遺失。** 只有 run2 保留；run3 thinking 明明已抽到，成稿仍刪除。[run1](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run1.md:17)、[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:21)、[run3 thinking](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run3.think.txt:24) | **2/3** | **高**：可能弱化成當日可交付的印象 | [後說為準規則](/Users/justinlee/HybridAIWorkshop/execerice/prompt-v4.txt:73) 已存在但未觸發 | **行為型** |
+| 4 | **「12 筆全部來自同一間門市」的範圍被弱化。** run2、run3 未明確保存「全部、同一間」。 | **2/3** | 中：可能把單店資料問題誤讀成廣泛故障 | 已有保留數量與影響範圍規則 | **行為型** |
+| 5 | **8/31 對象仍有一次實質錯誤。** run2 加入「客戶」；但三次都沒有再把日期放入客戶簽約期限，這項核心改善成立。[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:24) | **1/3，不過 (a)** | 高 | 「保留原對象」規則已有；few-shot 的「我們／說話方」又與逐字保留要求略有衝突 | **結構＋行為型** |
+| 6 | **`postg` 被刪除。** run2 的正文和名稱清單都沒有該詞。[run2](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run2.md:26) | **1/3，不過 (a)** | 中高 | [不得刪除規則](/Users/justinlee/HybridAIWorkshop/execerice/prompt-v4.txt:47) 已有但未觸發 | **行為型** |
+| 7 | **輸出核對過程。** run3 結尾出現 Self-Correction Check。[run3](/Users/justinlee/HybridAIWorkshop/execerice/runs/v4-run3.md:31) | **1/3，不過 (a)** | 低至中 | 已明文禁止 | **行為型** |
+
+另外，run1 還把「測試環境可先重跑」錯誤耦合到取得正式金鑰之後；但只發生 1/3，不值得單獨加規則。
+
+## 只留最高槓桿一項
+
+**把目前只示範「時程／決議／名稱」的局部 few-shot，替換成一個完整端到端 few-shot。**
+
+新範例只需集中示範：
+
+- 不同主體的因果鏈不得合併換人；
+- 每個獨立待辦各占一列；
+- 後面的「隔天較安全」取代前面的「當天可以」；
+- 日期對象只保留原詞；
+- 最終輸出到名稱清單即停止，不附核對註記。
+
+這仍是單一修改，而且直接補上 v4 範例沒有教到的區段。值得再做**最後一次、3 seed 的有限實驗**；若責任主體、待辦或最後修正仍不穩，就應正式判定已到「單 prompt＋4B」天花板，停止堆規則，改用第二階段 validator 或人工覆核。
+
+## 商務可用性判定
+
+**不可直接作為實際商務使用。** 理由是 3/3 都出現責任主體錯置或待辦不完整，且 2/3 遺失最後的保守時程；這些不是只核對名稱就能補救的問題。
+
+目前可定位為「需人工完整覆核的會議紀錄草稿」。即使名稱清單經人工核對，也只是已溝通的務實替代，**不等同於滿足原始的『模型自行把專有名詞正確還原』標準**。

@@ -1,0 +1,66 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into a concise, actionable meeting record ready for the team.
+    *   **Constraint 1 (Crucial):** *Only* use information from the transcript. No external additions/assumptions.
+    *   **Constraint 2 (Tone/Style):** Professional, concise, action-oriented.
+    *   **Sections Required:** Summary (2-4 points), Resolutions, Action Items (Table format: Owner | Task | Deadline/Timing), Follow-up/Risks.
+    *   **Specific Rules:**
+        *   Summary: Main issues, conclusions, limitations/next steps. Avoid redundancy with other sections.
+        *   Resolutions: Only clearly agreed-upon decisions. No suggestions, estimates, or prerequisites count as resolutions unless they are final agreements. If none, write "無".
+        *   Action Items: Table format (Owner | Task | Deadline/Timing). One task per row. Owner must be explicitly named/defined (otherwise "未確認"). If no deadline, use "未確認".
+        *   Follow-up/Risks: Unresolved issues, pending verification, potential blockers. If none, write "無".
+        *   Voice/Tone: Maintain the original quantity and impact. Do not change questions into conclusions, estimates into commitments. No adding facts or making vague info specific (e.g., don't guess the exact type of data).
+        *   Correction Rule: Later speech overrides earlier speech.
+
+2.  **Analyze the Transcript (Deconstruction & Extraction):**
+
+    *   *Speaker 1:* Customer is pressing about the timeline. I checked 12 failures. All from a new trial location. The issue isn't the payment function being broken; it's that the store data didn't match.
+    *   *Speaker 2:* What does "store data mismatch" mean in plain terms?
+    *   *Speaker 1:* Postgre uses franchisor codes. Pineapple Pay uses the merchant store code established during application. We currently have the old version of the mapping table, which doesn't include this new store. So the system thinks two codes are different stores when they are actually the same location.
+    *   *Speaker 1 (Cont.):* The problem is we lack the latest version of the store mapping table. We need to ask the client/Golden Cow window for the latest list, update the map, and then re-run it.
+    *   *Speaker 2:* If I ask them, once you get the list and update it, when can we test?
+    *   *Speaker 1:* We can re-run in the testing environment first. BUT, there is a prerequisite for the production environment: the client must sign the formal contract with Equidote Co., Ltd. Otherwise, we won't get Pineapple Pay's official merchant data and keys.
+    *   *Speaker 2:* I knew about the key part. After signing and getting the official keys, the store mapping needs to be re-run, and then tested in the production environment. Only after passing all tests can I give a timeline. Why don't you suggest a date, and we'll see if it works?
+    *   *Speaker 1:* Our contract is due for acceptance on August 31st. The key point is, once you get the official keys, how long does it take to run tests in the production environment?
+    *   *Speaker 2:* Downstairs there's a local eatery, and it's also a trial location. If things go smoothly, maybe in the time of one breakfast meal.
+    *   *Speaker 2 (Cont.):* I can tell the client we can test on the day they get the key. But it's better to aim for the next day. If they get it in the afternoon, the breakfast shop might be closed.
+
+3.  **Drafting the Sections (Applying Constraints):**
+
+    *   **## 會議摘要 (Summary):**
+        *   *Issue:* 12 failed transactions traced to a mismatch between the franchisor's store code (Postgre) and Pineapple Pay's merchant code.
+        *   *Root Cause:* The current mapping table is outdated and does not include the new trial location.
+        *   *Prerequisite/Next Step:* To proceed, the client must provide the latest store list to update the mapping table.
+        *   *Critical Path:* Accessing the production environment requires the client to first sign the formal contract and obtain official keys.
+        *   *(Check: 2-4 points, covers main issues/limitations.)*
+
+    *   **## 決議 (Resolutions):**
+        *   Was anything definitively agreed upon? No. They discussed the process, prerequisites, and timelines (e.g., "if things go smoothly..."), but no final decision or commitment was made regarding the timeline or success.
+        *   *(Decision: 無)*
+
+    *   **## 待辦事項 (Action Items):**
+        *   Task 1: Get the latest store list. (Who? Client/Golden Cow window. What? Latest version of the store list. When? Unclear.)
+        *   Task 2: Update the mapping table. (Who? Implied technical team/Speaker 1's side. What? Update the map. When? After receiving the list.)
+        *   Task 3: Sign contract/Get keys. (Who? Client. What? Sign formal contract with Equidote Co., Ltd. and obtain official keys. When? Before production testing.)
+        *   *(Structuring the table based on explicit roles/tasks):*
+
+| 負責人 | 事項 | 期限／時點 |
+| :--- | :--- | :--- |
+| 客戶/金牛窗口 | 提供最新版門市清單 | 未確認 |
+| [技術團隊] | 更新門市對照表並重跑測試 | 未確認 |
+| 客戶 | 與額度有限公司簽署正式合約並取得正式金鑰 | 未確認 |
+
+    *   **## 待確認與風險 (Follow-up/Risks):**
+        *   The official contract signing and key acquisition are prerequisites for production testing. (This is a major blocker).
+        *   The timeline depends on the successful completion of testing in both environments.
+        *   *(Refining this into a concise list):*
+
+| 待確認與風險 |
+| :--- |
+| 正式環境測試的前提是客戶必須先與額度有限公司簽署正式合約並取得正式金鑰。 |
+| 測試環境重跑與正式環境測試所需的時間點尚待確認（順利情況下，可能為一頓早餐的時間）。 |
+
+4.  **Final Review against Constraints:** (Self-Correction: Ensure the language is neutral and strictly adheres to the transcript.) The draft looks solid. (Proceed to final output generation).
