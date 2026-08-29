@@ -104,11 +104,11 @@ for s in 1 2 3; do python3 runs/run_gemma.py prompt-v5.txt my-run$s.md $s; done
 
 實驗環境：lms CLI（commit 07b7252）、`google/gemma-4-e4b`（本地 6.86 GB 變體）、temperature 0.1、max_tokens 4096。
 
-**跑審查迴圈**：用 `runs/review-template.md`（路徑已是 repo-relative，從 repo root 直接可用）；`runs/sol-review-request-v1~v5.md` 是當時各輪的實際請求，保留原始本機路徑作為歷史紀錄，不建議直接執行。審查模型不限 GPT-5.6 sol，任何比受測模型強得多的模型都行：
+**跑審查迴圈**：先複製 `runs/review-template.md`，把 `<...>` 佔位符與 `vN` 換成你的實際值存成 `my-review-request.md` 再執行；`runs/sol-review-request-v1~v5.md` 是當時各輪的實際請求，保留原始本機路徑作為歷史紀錄，不建議直接執行。審查模型不限 GPT-5.6 sol，任何比受測模型強得多的模型都行：
 
 ```bash
 codex exec -m gpt-5.6-sol -c model_reasoning_effort=medium -s read-only \
-  --skip-git-repo-check -o review-out.md - < runs/review-template.md
+  --skip-git-repo-check -o review-out.md - < my-review-request.md
 ```
 
 **套用到你自己的場景**：換掉 `transcript-software.txt`（或改 `run_gemma.py` 第 10 行的檔名）、把驗收標準寫進審查請求，從 v1 重新開始迴圈。

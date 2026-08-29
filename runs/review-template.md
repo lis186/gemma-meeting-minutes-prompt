@@ -1,5 +1,5 @@
 你是資深審查者。請復盤一個「本地小模型會議記錄產生器」的執行結果。
-（此為可重用模板；路徑以 repo root 為工作目錄。歷史上各輪實際請求見 sol-review-request-v1~v5.md，其路徑為當時本機布局，僅供紀錄。）
+（此為可重用模板；路徑以 repo root 為工作目錄。歷史上各輪實際請求見 runs/sol-review-request-v*.md，其路徑為當時本機布局，僅供紀錄。）
 
 ## 系統背景
 - 執行模型：<受測模型>（thinking 模式，temperature 0.1）
@@ -12,7 +12,7 @@
 - 逐字稿：transcript-software.txt
 - Prompt（本輪標的）：prompt-vN.txt
 - 輸出（3 seeds）：runs/vN-run1.md、runs/vN-run2.md、runs/vN-run3.md
-- thinking：runs/vN-run1.think.txt
+- thinking：runs/vN-run*.think.txt
 - 歷史復盤：runs/sol-review-v*.md
 
 ## 任務（嚴格照此框架）
