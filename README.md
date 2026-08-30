@@ -169,7 +169,7 @@ runs/
 
 ## 作者
 
-[Justin Lee](https://github.com/lis186)——[**ccxray**](https://github.com/lis186/ccxray) 的開發者：零設定的 Claude Code／Codex 透明代理，讓你看見每次 API 呼叫的成本、系統提示詞 diff，並在請求送出前攔截編輯。本實驗全程的 token 流向就是這樣看的。`npx ccxray claude` 一行開始。
+[Justin Lee](https://github.com/lis186)——[**ccxray**](https://github.com/lis186/ccxray) 的開發者：零設定的 Claude Code／Codex 透明代理，讓你看見每個 session 每次呼叫的成本、context 佔用、cache 命中率、system prompt 與使用的 skill／MCP。本實驗全程的 token 流向就是這樣看的。`npx ccxray claude` 一行開始。
 
 ## 授權
 
