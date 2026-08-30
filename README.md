@@ -4,7 +4,7 @@
 
 > Hybrid AI 工作坊的實作練習。逐字稿為虛構的支付系統串接會議。
 >
-> 📽 **5 分鐘高橋流簡報**：[`presentation/adversarial-prompting.html`](presentation/adversarial-prompting.html)（單檔零依賴，下載後瀏覽器直接開；[講稿大綱](presentation/README.md)）
+> 📽 **5 分鐘高橋流簡報**：[直接播放（GitHub Pages）](https://lis186.github.io/gemma-meeting-minutes-prompt/presentation/adversarial-prompting.html)｜[原始檔](presentation/adversarial-prompting.html)｜[講稿大綱](presentation/README.md)
 
 ## 這是什麼
 
