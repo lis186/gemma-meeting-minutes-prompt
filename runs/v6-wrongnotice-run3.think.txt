@@ -1,0 +1,74 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into a concise, actionable meeting record package (Summary, Resolutions, Action Items, Risks/Open Issues, Timelines, Terminology Check).
+    *   **Source Material:** Meeting Notice (Context/Definitions) + Transcript (Raw Data).
+    *   **Key Constraints:**
+        *   Only use information present in the transcript/notice. No external additions.
+        *   Use Notice definitions for proper nouns (e.g., company names, roles).
+        *   Transcript dates are relative unless explicitly stated. No guessing dates.
+        *   If a speaker is not identified in the transcript, they cannot be assigned tasks unless explicitly stated. If roles are used (e.g., "Client Side"), they must be clear.
+        *   Transcript errors (ASR) must be corrected if contextually obvious (e.g., "下蛋" -> "下單").
+        *   Company/Product names unknown to context must be preserved and flagged (ASR check).
+        *   Output structure is strictly defined (Summary, Resolutions, Action Items Table, Risks/Open Issues, Timelines, Terminology Check).
+        *   *Crucial Rule:* Preconditions, suggestions, estimates, and pending items are NOT resolutions. Only clear agreements count as Resolutions.
+
+2.  **Analyze the Input Data:**
+
+    *   **Meeting Notice Context:**
+        *   Project: POS Machine $\times$ OrangePay Payment Integration.
+        *   Date/Time: Aug 26, 2026 (Tricky - the transcript discusses *future* testing/milestones).
+        *   Attendees: Chen Borui (Our PM), Lin Yizhen (Our Backend Eng.), Zhang Shihao (Client Info Window), Wang Siying (Client Payment Window).
+        *   Agenda: 1. Failure analysis (12 cases), 2. Mapping table update, 3. Go-live prerequisites/contract review (8/31).
+        *   Key Terminology: POS, OrangePay, Group Franchisee (Client), Contract Review (8/31).
+
+    *   **Transcript Analysis (Deconstruction & Extraction):**
+        *   *Topic:* 12 failed transactions from a new trial store.
+        *   *Problem:* Not payment failure, but mismatch in store IDs (POS uses franchise ID; OrangePay uses merchant ID). The current mapping table is old and doesn't include the new store.
+        *   *Solution/Prerequisite:* Need the client (Info/Payment Window) to compile and provide the latest store list, update the mapping table, and re-run testing.
+        *   *Formal Go-Live Prerequisite:* Client must sign the formal contract with "額度有限公司" (Edu Company). Without this, they cannot get the official merchant data/keys for the formal environment.
+        *   *Testing Timeline:* After signing and getting the official keys, mapping must be re-run. Testing in the formal environment is needed.
+        *   *Testing Duration Estimate:* If keys are received, testing might take "one breakfast time" (quick), but safer to allow "the next day."
+        *   *Action/Decision:* The speaker suggests they can reply to the client that testing starts on the day keys are received, but waiting until the next day is safer.
+
+3.  **Drafting the Output Sections (Filtering and Refining):**
+
+    *   **[Self-Correction/Refinement during drafting]:** The transcript is highly conversational and contains many suggestions ("不如你說想押哪一天," "最好還是抓隔天啦"). I must filter these suggestions into actionable items or risks, not resolutions. The contract signing (8/31) is a *precondition*, not a resolution of the current meeting.
+
+    *   **## 會議摘要 (Summary):**
+        *   Focus on the core issue (12 failures) and the path forward.
+        *   *Draft:* 12 failed transactions due to store ID mismatch (old mapping table). Solution requires client providing the latest store list. Formal go-live depends on contract signing and obtaining official keys. Testing timeline is dependent on key receipt.
+
+    *   **## 決議 (Resolutions):**
+        *   Was anything definitively agreed upon? They discussed the need for the client to provide the list, but they didn't *agree* on a specific date or action yet. The speaker suggests replying to the client about testing, but this is still a suggestion/next step, not a final decision.
+        *   *Conclusion:* No clear, binding resolutions were reached in this segment. -> "無".
+
+    *   **## 待辦事項 (Action Items):**
+        *   Who needs to do what?
+        *   1. Client (Info/Payment Window) needs to compile the latest store list.
+        *   2. Our side (implied, but not explicitly stated in the transcript) needs to receive this list and update the mapping.
+        *   3. Client needs to sign the contract with "額度有限公司." (This is a major prerequisite, but it's an action item for the client side).
+        *   *Mapping:* Need to use roles/titles if names aren't attached. The transcript uses "客戶那邊的資訊和金流窗口" (Client Info/Payment Window) and "我們" (Our side).
+
+    *   **## 待確認與風險 (Risks/Open Issues):**
+        *   The biggest risk is the dependency chain: Client List $\rightarrow$ Our Update $\rightarrow$ Contract Signed/Keys Received $\rightarrow$ Formal Testing.
+        *   The timeline is highly uncertain ("one breakfast time" vs "next day").
+
+    *   **## 重要時程 (Timelines):**
+        *   The transcript mentions the contract deadline: "我們的合約是 8 月 31 號要驗收."
+        *   *Draft:* August 31st | Contract review/acceptance deadline | Our side.
+
+    *   **## 名稱待確認 (Terminology Check):**
+        *   "額度有限公司" (Edu Company) - mentioned as the contracting party.
+        *   "鳳梨Pay" (OrangePay) - Mentioned in the notice, used in context.
+        *   "POS" (Point of Sale) - Used in context.
+
+4.  **Final Review against Constraints:**
+    *   Are all names/companies flagged if uncertain? Yes (額度有限公司).
+    *   Is the tone professional and concise? Yes.
+    *   Are suggestions/estimates separated from resolutions? Yes (e.g., "one breakfast time" is a risk/estimate, not a decision).
+    *   Is the formatting correct? Yes (Tables, specific headings).
+
+5.  **Generate Final Output.** (This matches the provided solution.)

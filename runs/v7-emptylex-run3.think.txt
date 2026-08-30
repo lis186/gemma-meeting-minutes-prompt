@@ -1,0 +1,76 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into concise, actionable meeting minutes (Summary, Resolutions, Action Items, Risks/Uncertainties, Timelines, Name Check).
+    *   **Source Material:** Transcript + Glossary (The glossary is empty in the prompt, so I must proceed assuming no formal names need checking unless they appear in the transcript).
+    *   **Crucial Constraint:** *Only* use information present in the transcript. No external assumptions or additions.
+    *   **Tone/Style:** Professional, concise, actionable.
+    *   **Specific Sections Required:** Summary (2-4 points), Resolutions (Only agreed upon decisions), Action Items (Table: Owner | Task | Deadline/Timing), Risks/Uncertainties, Important Timelines (Date | Event | Target), Name Check (ASR check).
+    *   **Handling Ambiguity:** Contextual correction of ASR errors is allowed (e.g., "postg" -> likely a system/process name, but if contextually clear, use the correct term). Names must be preserved as "我們/客戶/供應商" unless they are specific roles.
+    *   **Decision vs. Suggestion:** Only firm decisions count as Resolutions. Suggestions/Estimates are not.
+    *   **Glossary Usage:** The glossary is empty, so I must treat all proper nouns as needing verification if they are company names, but since the transcript is highly technical and uses generic terms (like "金牛窗口," "鳳梨配"), I must be careful.
+
+2.  **Analyze the Transcript (Deconstruction & Extraction):**
+
+    *   *Transcript Flow:*
+        *   Client is pressing about the delay.
+        *   The issue: 12 failed transactions from a new trial store.
+        *   Root Cause: System mismatch. The payment system (鳳梨配) uses a merchant store ID established during application, but the current data is an old comparison table lacking the new store. Both systems think they are different, but they are the same physical store.
+        *   Solution Path: Need the client's information and "金牛窗口" to compile the latest store list, update the comparison table, and re-run.
+        *   Testing Environment vs. Production: Testing environment can be rerun now, but production requires a prerequisite.
+        *   Production Prerequisite: The client must first sign the formal contract with "額度有限公司." Without this, they cannot get the official merchant data and keys for production.
+        *   Timeline/Testing: Once signed and keys are obtained, the comparison table must be rerun in the production environment.
+        *   Testing Duration Estimate: If everything goes well, it might take about one breakfast time (quick). Better to allow a day.
+        *   Action/Response: Can tell the client testing starts the day keys are received, but suggest allowing a day.
+        *   Contract Deadline: Our contract validation is August 31st.
+        *   Key Point: After getting the official keys, how long does production testing take? (The answer is implied to be quick, but the timeline depends on the key acquisition).
+
+3.  **Synthesize and Draft Content (Applying Constraints):**
+
+    *   **Fact Check/Refinement:**
+        *   *Issue:* 12 failed transactions due to store ID mismatch (old data vs. new system).
+        *   *Prerequisite for Production:* Client must sign the formal contract with 額度有限公司 AND obtain official keys.
+        *   *Action Needed:* Client/Information + 金牛窗口 must compile the latest store list and update the comparison table.
+        *   *Timeline:* Our contract validation is August 31st.
+
+    *   **Drafting Sections:**
+
+        *   **Summary (2-4 points):**
+            1.  Failed transactions traced to store ID mismatch between the payment system and our system (old data vs. new application).
+            2.  Production testing is blocked until the client signs the formal contract with 額度有限公司 and obtains official keys.
+            3.  The immediate next step is compiling the latest store list with 金牛窗口 for comparison table updates and testing.
+            4.  Our contract validation deadline is August 31st.
+
+        *   **Resolutions:** (Was anything definitively agreed upon?)
+            *   The speakers discussed the path forward, but no final decision was made regarding *when* testing will happen or *if* the current data is sufficient. The focus was on identifying prerequisites and next steps.
+            *   *Conclusion:* No firm resolutions reached regarding the project status or timeline. (Must write "無").
+
+        *   **Action Items:**
+            1.  Compile the latest store list with 金牛窗口 (Owner: Client/Information, Task: Compile list and update comparison table).
+            2.  Client needs to sign the formal contract with 額度有限公司 (Owner: Client, Task: Sign contract).
+            3.  Once keys are obtained, testing can proceed (Owner: We/Team, Task: Test in production environment).
+            *Self-Correction:* The transcript doesn't explicitly assign "Compile list" to a specific person, only that it needs to be done with the client's information and 金牛窗口. I must use "未確認" for the owner if it's not a specific person/role.
+
+        *   **Risks/Uncertainties:**
+            1.  Production testing is conditional on the client signing the contract and obtaining official keys.
+            2.  The time required for production testing is unknown, though estimated to be quick (one breakfast time / a day).
+            3.  The current comparison table is insufficient/outdated.
+
+        *   **Important Timelines:**
+            1.  August 31st | Our contract validation deadline | 我們 (Our team).
+
+        *   **Name Check:**
+            1.  額度有限公司: Needs checking (Company name).
+            2.  金牛窗口: Seems like a role/group, but if it's a specific entity name, it needs checking. Given the context ("金牛窗口"), I will treat it as a proper noun/entity name needing verification.
+            3.  鳳梨配: Payment system name, needs checking.
+
+4.  **Final Review against Constraints:**
+    *   All information is from the transcript. (Yes).
+    *   No external info added. (Yes).
+    *   "我們/客戶/供應商" preserved. (Used "客戶," "我們").
+    *   Action items are clear and actionable. (Yes).
+    *   The tone is objective. (Yes).
+
+5.  **Construct the Final Output.** (This matches the generated response below.)

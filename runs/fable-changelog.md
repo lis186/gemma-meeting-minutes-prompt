@@ -8,3 +8,10 @@
 | v2→v3 | sol-review-v2（指定文字） | 刪除 4 條核對清單，替換為單條「逐字證據綁定」段落（sol 提供的文字微調後貼入）。 |
 | v3→v4 | sol-review-v3（指定文字） | 刪除抽象綁定段；新增固定區段「重要時程」「名稱待確認」、前提≠決議規則、跨領域虛構 few-shot 片段（青禾/blux 範例，sol 提供）。 |
 | v4→v5 | sol-review-v4（方向指定） | 把局部 few-shot 擴充為完整端到端範例：主體不換人的因果鏈、待辦逐列、後說取代前說、輸出至名稱清單即停（範例文字由 fable 撰寫）。 |
+
+## 實驗二（meeting-notice 分支）
+
+| 輪 | 依據 | 實際修改 |
+|---|---|---|
+| v5→v6 | user 假設：提供開會通知可提升品質 | prompt 加三條通知使用規則 + {NOTICE} slot（runner 注入通知全文）。**Provenance 事故**：首輪誤植 fable 虛構的通知（污染 run 封存為 v6-wrongnotice-*），sol 抓到後以真實通知重跑。 |
+| v6→v7 | sol：通知降格為正字詞彙表、來源完全隔離 | 移除通知全文注入；sol 的隔離規則全文貼入；stage1（make_lexicon.py）自動抽詞彙表、stage2 只注入詞彙表。stage1 首次空輸出→意外產生 v7-emptylex 對照組（最終被 sol 選為交付底稿）。 |

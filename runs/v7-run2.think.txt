@@ -1,0 +1,65 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into concise, actionable meeting minutes (Summary, Resolutions, Action Items, Risks/Uncertainties, Timelines, Glossary).
+    *   **Source Material:** Transcript + Glossary (limited to specific rules).
+    *   **Crucial Constraint 1 (Factuality):** All content must be strictly derived from the transcript. No external information allowed.
+    *   **Crucial Constraint 2 (Glossary Usage):** Only use the glossary if the term appears in the transcript and is a high-confidence match. The glossary terms are: `本地智慧有限公司`, `Retail POS`, `鳳梨 Pay`.
+    *   **Crucial Constraint 3 (Naming/Roles):** Use "我們/客戶/供應商" as per the transcript. Do not replace them with company names unless explicitly stated in the transcript (e.g., "客戶要先跟額度有限公司簽那個正式合約").
+    *   **Crucial Constraint 4 (Decision vs. Suggestion):** Only *agreed-upon* decisions count as Resolutions. Suggestions, estimates, and prerequisites are not resolutions.
+    *   **Crucial Constraint 5 (Action Items):** Must be specific, assignable (person/role), and have a deadline/timing.
+    *   **Crucial Constraint 6 (Uncertainty):** Use "ASR 正字未核實" for names/terms that cannot be confirmed by the glossary or context.
+    *   **Output Structure:** Specific sections required (Summary, Resolutions, Action Items, Risks, Timelines, Glossary).
+
+2.  **Analyze the Transcript & Apply Contextual Refinement:**
+
+    *   *Transcript Scan:* The discussion revolves around 12 failed transactions from a new trial store. The issue is mismatched numbering systems (POS uses franchise codes; Phoenix Pay uses merchant/store IDs). They need the latest version of the store mapping table.
+    *   *Key Entities/Terms:*
+        *   "鳳梨 Pay": Matches the glossary. (Used in transcript).
+        *   "額度有限公司": This is mentioned as the entity needing a formal contract. (Presumably, this might be `本地智慧有限公司` or related to the payment service provider, but since the transcript says "額度有限公司," I must use that unless it matches perfectly. Let's check the glossary again: `本地智慧有限公司`. They are different names in the transcript vs. glossary, so I must stick to "額度有限公司" as per the transcript.)
+        *   "金牛窗口": A contact person/entity.
+        *   "門市資料沒有對上": The core problem (mismatching IDs).
+        *   "店長代碼/門市編號": The specific codes.
+
+    *   *Contextual Refinement:*
+        *   "鳳梨配用的是申請支付服務時建立商戶門市編號": This is the system/service being discussed.
+        *   "額度有限公司簽那個正式合約": This is a prerequisite for the formal environment.
+        *   "金鑰": Needed after signing the contract.
+
+3.  **Drafting the Sections (Iterative Process):**
+
+    *   **Glossary Check:**
+        *   `鳳梨 Pay`: Used in transcript. Confirmed.
+        *   `本地智慧有限公司`: Not mentioned in the transcript, but "額度有限公司" is. I must treat them as distinct unless proven otherwise by the transcript.
+        *   `Retail POS`: Not mentioned in the transcript.
+
+    *   **Summary (What happened/current status):**
+        *   12 failed transactions from a new trial store.
+        *   The root cause is the mismatch between POS codes and Phoenix Pay merchant IDs (they are different systems/versions).
+        *   Solution requires the latest store mapping table.
+        *   Formal environment testing is contingent on signing a contract and obtaining the formal key.
+
+    *   **Resolutions (What was agreed upon):**
+        *   The immediate action is to get the updated mapping table. (This sounds like a decision/agreement).
+        *   The testing environment can be rerun after the table is updated. (This is a procedural agreement).
+
+    *   **Action Items (Who does what, when):**
+        *   Need to get the updated list from "客戶那邊的資訊和金牛窗口." (Action: Get data).
+        *   Need to update the mapping table. (Action: Update system).
+        *   Need to test in the formal environment *after* signing/getting the key. (Action: Test).
+
+    *   **Risks/Uncertainties:**
+        *   The formal environment testing depends on the contract signing and key acquisition.
+        *   The timeline for successful testing is highly variable (maybe one breakfast time, maybe next day).
+
+    *   **Timelines:**
+        *   Contract deadline: August 31st (for acceptance/驗收).
+
+    *   **Name Check:**
+        *   "額度有限公司" is used in the transcript. It needs to be listed if it's a proper noun/company name that might need verification, but since the glossary has `本地智慧有限公司`, and they are different in the transcript, I must treat "額度有限公司" as a proper noun mentioned in the transcript. Since it's not in the glossary, I must flag it as "ASR 正字未核實" if it's a company name. *Self-Correction: The prompt says "逐字稿中的『我們／客戶／供應商』必須原樣保留，不得替換成公司或與會者名稱。" However, if a specific company name appears (like "額度有限公司"), and it's not in the glossary, I must treat it as a proper noun that needs verification if it is meant to be a company name.* Let's assume "額度有限公司" is the entity mentioned. I will flag it as needing verification since it's a specific company name/entity mentioned in the context of contracts.
+
+4.  **Final Polish and Formatting (Applying Strict Constraints):** (This leads directly to the final output structure.)
+
+    *(Self-Check against constraints: Did I use external info? No. Is the tone objective? Yes. Are all action items clear? Yes. Did I handle the names correctly? Yes, flagging "額度有限公司" and using "鳳梨 Pay".)*
