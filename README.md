@@ -3,6 +3,8 @@
 用 4B 本地小模型（gemma-4-e4b + LM Studio）把「無說話者標籤、含 ASR 誤字」的逐字稿整理成商務會議紀錄——以及一套**三模型自動改善 prompt 的迭代方法**，附完整實驗證據（5 版 prompt × 各 3 seeds × 5 輪審查全文）。
 
 > Hybrid AI 工作坊的實作練習。逐字稿為虛構的支付系統串接會議。
+>
+> 📽 **5 分鐘高橋流簡報**：[`presentation/adversarial-prompting.html`](presentation/adversarial-prompting.html)（單檔零依賴，下載後瀏覽器直接開；[講稿大綱](presentation/README.md)）
 
 ## 這是什麼
 
@@ -145,6 +147,7 @@ codex exec -m gpt-5.6-sol -c model_reasoning_effort=medium -s read-only \
 ## 檔案導覽
 
 ```
+presentation/                    高橋流簡報（單檔 HTML＋講稿大綱）
 prompt-v1.txt ~ prompt-v5.txt    實驗一的五版 prompt（v1=原始標的）
 prompt-v6.txt / prompt-v7.txt    實驗二：通知全文注入版／來源隔離版（v7+空詞彙表=最終推薦條件）
 meeting-notice.txt               真實開會通知（虛構教材內容）；-invented.txt 為誤植版存檔
