@@ -1,0 +1,73 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into a concise, actionable meeting record package (Summary, Resolutions, Action Items, Risks/Open Issues, Timelines, Name Check).
+    *   **Source Material:** Meeting Notice (Context/Correct Names) + Transcript (Raw Data).
+    *   **Key Constraint 1 (Names/Terms):** Use Notice names as correct. If the transcript uses a variation, correct it (e.g., "鳳梨 Pay" vs. "鳳梨配"). If a term is unclear, keep the transcript version and flag it in `待確認與風險` or `名稱待確認`.
+    *   **Key Constraint 2 (Attribution):** If the speaker isn't tagged, assume they are one of the attendees (Lin Xiaoan or Chen Baiyu) but *only* assign tasks if explicitly stated. If the person/role is unclear, use "未確認."
+    *   **Key Constraint 3 (Accuracy):** No external information. Do not add, guess, or change the meaning/scope of the original text.
+    *   **Key Constraint 4 (Decision vs. Suggestion):** Only *agreed upon* decisions go into `決議`. Suggestions, estimates, and prerequisites do not.
+    *   **Output Structure:** Strict adherence to the required sections (Summary, Resolutions, Action Items, Risks/Open Issues, Timelines, Name Check).
+
+2.  **Analyze the Input Data (Notice & Transcript):**
+
+    *   **Notice:**
+        *   Project: Retail POS × 鳳梨 Pay Integration Progress Meeting.
+        *   Date/Time: 2026/08/27.
+        *   Attendees: 林小安 (Product Manager), 陳柏宇 (Integration Engineer).
+        *   Goal: Confirm Retail POS update status and Phoenix Pay integration progress; identify issues for partners.
+    *   **Transcript Scan & Interpretation (Mental Draft/Drafting Notes):**
+        *   *Issue:* 12 failed transactions from a new trial store. Not payment function failure, but mismatch in store codes.
+        *   *Technical Detail:* POS uses franchise system IDs; Phoenix Pay uses merchant/store IDs established during service application. They have the old mapping table, missing the new store.
+        *   *Solution:* Need to get the latest store list from the client/Jinniu window, update the mapping, and re-run.
+        *   *Prerequisite (Crucial):* The client must sign the formal contract with Egudo Co. before they can get the Phoenix Pay production environment merchant data/keys.
+        *   *Testing:* After signing and getting the key, mapping needs to be re-run, then tested in production.
+        *   *Timeline/Estimate:* Testing might take about one breakfast time (if successful). Can reply to the client that testing is possible on the day of key receipt, but waiting a day is safer.
+        *   *Contract Deadline:* The contract signing deadline is August 31st (for acceptance/驗收).
+
+3.  **Drafting the Output Sections (Iterative Refinement):**
+
+    *   **[Self-Correction/Refining Terminology]:**
+        *   "鳳梨配" -> "鳳梨 Pay" (from Notice).
+        *   "額度有限公司" -> Use the full name/contextualized term.
+        *   "金牛窗口" -> Specific contact point mentioned in the transcript.
+        *   "門市資料沒有對上" -> Store code mismatch.
+
+    *   **## 會議摘要 (Summary):**
+        *   *Focus:* What is the core problem, what was discussed, and what are the next steps?
+        *   *Draft:* Failed transactions due to store code mismatch. Need updated mapping table. Formal contract signing is a prerequisite for production testing/keys.
+        *   *(Check against constraints: 2-4 points, no repetition of detail.)*
+
+    *   **## 決議 (Resolutions):**
+        *   *Focus:* Was anything definitively agreed upon?
+        *   *Transcript Check:* They discussed the solution (get new list, update, test) and the prerequisite (sign contract). No firm agreement was reached on *when* testing will happen or *who* does the next step, only that they need to proceed. The suggestion about testing time is an estimate, not a decision.
+        *   *Conclusion:* No clear, binding decisions were made in this meeting. -> "無".
+
+    *   **## 待辦事項 (Action Items):**
+        *   *Focus:* Who does what, when? Must be specific.
+        *   *Action 1 (Client/Partner):* Client needs to provide the latest store list and coordinate with Jinniu.
+        *   *Action 2 (Our Side):* We need to receive the list, update the mapping, and then proceed with testing.
+        *   *Action 3 (Client/Partner):* Client needs to sign the formal contract with Egudo Co.
+        *   *(Assigning Responsibility):* The transcript implies the speaker (likely Chen Baiyu, the engineer) is addressing the technical issues and suggesting actions. The client's action items are directed *to* them/the partner.
+        *   *Refining Action Items:*
+            1.  Client side: Get the latest store list from their info/Jinniu window. (Responsible: Client)
+            2.  Our side: Receive the list, update mapping, and re-run tests. (Responsible: Our team/未確認)
+            3.  Client side: Sign the formal contract with Egudo Co. (Responsible: Client)
+
+    *   **## 待確認與風險 (Risks/Open Issues):**
+        *   *Focus:* What is blocking progress?
+        *   *Draft:* The formal contract signing (prerequisite for production keys/data) is the biggest blocker. Also, the testing timeline depends on receiving the key and the successful mapping update.
+
+    *   **## 重要時程 (Timelines):**
+        *   *Focus:* Specific dates mentioned.
+        *   *Transcript Check:* "我們的合約是 8 月 31 號要驗收."
+        *   *Draft:* August 31st | Contract acceptance/驗收 | Our side.
+
+    *   **## 名稱待確認 (Name Check):**
+        *   *Focus:* Flagging company/product names.
+        *   *Names found:* 本地智慧有限公司 (Our Company), 在地美食早餐店有限公司 (Client/Partner), 額度有限公司, 鳳梨 Pay, 金牛窗口.
+        *   *(Need to check if any names were used ambiguously or needed flagging based on the transcript's usage.)* The transcript uses "鳳梨配" and "鳳梨 Pay." I will flag the product name if it was used ambiguously.
+
+4.  **Final Review against Constraints:** (Self-Correction: Ensure the tone is professional and objective.) The structure looks sound. I will now generate the final output. (The term "鳳梨配" was used in the transcript, but the notice uses "鳳梨 Pay." I will use the correct term in the body text and flag any potential ambiguity if needed, but since the transcript used both forms, I will ensure consistency in the output.)

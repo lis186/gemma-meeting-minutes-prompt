@@ -1,0 +1,83 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into a concise, actionable meeting record package (Summary, Resolutions, Action Items, Risks/Open Issues, Timelines, Terminology Check).
+    *   **Source Material:** Meeting Notice (Context/Definitions) + Transcript (Raw Data).
+    *   **Key Constraints:**
+        *   Only use information present in the transcript/notice. No external additions.
+        *   Use Notice definitions for proper nouns (Project, System, Company names).
+        *   Transcript dates are relative unless explicitly stated. No guessing dates.
+        *   If a speaker is not identified in the transcript, do not assign work to them based on their presence. Must be explicitly stated. If unclear, write "未確認".
+        *   Transcript is ASR output (potential errors). Correct obvious errors based on context (e.g., "下蛋流程" -> "下單流程").
+        *   Company/Product names: If unsure, keep the original transcript term and flag it in "待確認與風險" or "名稱待確認."
+        *   **Output Structure:** Strict adherence to the required sections (Summary, Resolutions, Action Items, Risks/Open Issues, Timelines, Terminology Check).
+        *   **Tone:** Professional, concise.
+
+2.  **Analyze the Input Data (Notice & Transcript):**
+
+    *   **Notice Context:**
+        *   Project: POS 機 × 鳳梨Pay 支付串接專案.
+        *   Date/Time: Aug 26, 14:00–14:30.
+        *   Attendees (My Side): 陳柏睿, 林宜蓁.
+        *   Attendees (Client Side): 張士豪, 王思穎.
+        *   Key Issue: 12 failed transactions (Trial Run).
+        *   Goal: Confirm pre-production steps and contract acceptance (Deadline 8/31).
+        *   System: POS machine, PhoenixPay.
+
+    *   **Transcript Analysis (Deconstruction & Identification):**
+        *   *Speakers:* Unlabeled. Need to infer roles/actions based on content flow (though specific names are not linked to actions, the *roles* are present).
+        *   *Topic:* 12 failed transactions.
+        *   *Problem Root Cause:* The POS system uses the merchant's internal numbering; PhoenixPay uses the application service's merchant numbering. The current mapping table (對照表) is old and doesn't include the new store, causing mismatch.
+        *   *Solution Path:* Get the latest version of the merchant list/mapping table from the client side, update it, and re-run tests.
+        *   *Critical Dependency:* The client must sign the formal contract with "額度有限公司" (This is a potential company name needing verification). Without this, they cannot get the formal merchant data and keys for the PhoenixPay production environment.
+        *   *Testing/Go-Live:* After signing and getting the formal keys, the mapping table must be re-run/updated. Testing in the production environment is risky; they suggested testing in the test environment first, but the formal contract/keys are needed for *production* testing.
+        *   *Timeline Mentioned:* Contract acceptance deadline is August 31st (8/31).
+        *   *Testing Speed:* If keys are obtained, testing could be done the same day (if available) or preferably the next day.
+
+3.  **Drafting the Sections (Iterative Refinement):**
+
+    *   **[Self-Correction/Refining Terminology]:**
+        *   "額度有限公司" (Edu Company) - Needs to be flagged.
+        *   "鳳梨配" -> PhoenixPay (Contextual correction).
+        *   "對照表" -> Mapping Table/Merchant List.
+
+    *   **## 會議摘要 (Summary):**
+        *   Focus on the core issue, its cause, and the path forward.
+        *   *Draft:* 12 failed transactions due to outdated mapping table. The POS and PhoenixPay use different numbering systems. Need the client's latest merchant list to update the mapping table and retry testing. Formal contract signing with [Company Name] is a prerequisite for production keys/data.
+
+    *   **## 決議 (Resolutions):**
+        *   Was anything definitively agreed upon? They discussed the problem and the solution path, but no specific action (like "We agree to use X date" or "We accept Y plan") was finalized, only suggested.
+        *   *Conclusion:* No clear resolutions reached in this segment. -> "無".
+
+    *   **## 待辦事項 (Action Items):**
+        *   Who needs to do what?
+        *   1. Get the latest merchant list/information from the client side (Client's responsibility).
+        *   2. Update the mapping table after receiving the list (Our side's responsibility).
+        *   3. Sign the formal contract with [Company Name] (Client's responsibility).
+        *   *Action Item Check:* The transcript implies the speaker/our side needs to *ask* for the list, and the client needs to provide it.
+        *   *Action Item 1:* Get latest merchant list from client (Speaker/Our side).
+        *   *Action Item 2:* Sign contract with [Company Name] (Client side).
+        *   *Action Item 3:* Update mapping table after receiving list (Our side/Technical team).
+
+    *   **## 待確認與風險 (Risks/Open Issues):**
+        *   The critical path dependencies and unknowns.
+        *   1. The formal contract signing with [Company Name] is pending, which blocks production key acquisition.
+        *   2. The timeline for testing depends entirely on when the keys are received and the mapping is updated.
+
+    *   **## 重要時程 (Timelines):**
+        *   Only one specific date mentioned: Contract acceptance deadline.
+        *   *Draft:* August 31st | 合約驗收期限 (Contract Acceptance Deadline) | 客戶方.
+
+    *   **## 名稱待確認 (Terminology Check):**
+        *   "額度有限公司" - Needs flagging.
+        *   "鳳梨配" -> PhoenixPay (Used in context, but the specific name needs checking if it's a proper noun). Let's flag "鳳梨Pay" as the system name used in the notice, but if the transcript uses a variant like "鳳梨配," it should be noted. The notice says "鳳梨Pay." I will flag the company name mentioned in the transcript: "額度有限公司".
+
+4.  **Final Review against Constraints:**
+    *   Are all names/terms flagged if uncertain? Yes ("額度有限公司").
+    *   Is the tone professional and concise? Yes.
+    *   Are action items clearly assigned (or marked "未確認")? Yes, based on the transcript's implied roles.
+    *   Is no external information added? Yes.
+
+5.  **Generate Output.** (This leads to the final provided response.)

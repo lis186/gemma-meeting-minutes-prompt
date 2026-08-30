@@ -1,0 +1,63 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into a concise, actionable meeting record package (Summary, Resolutions, Action Items, Risks/Open Issues, Timelines, Name Check).
+    *   **Source Material:** Meeting Notice (Context/Correct Names) + Transcript (Raw Data).
+    *   **Key Constraint 1 (Names/Terms):** Use names/companies from the Notice as correct. Correct transcript errors based on context (e.g., "postg" -> POS). If unsure, keep original and flag it.
+    *   **Key Constraint 2 (Dates):** Use Notice date only for relative timing. Do not add missing dates.
+    *   **Key Constraint 3 (Accountability):** Must be explicitly stated in the transcript. If not, mark "Unconfirmed."
+    *   **Key Constraint 4 (Tone/Content):** No external information. Do not turn suggestions into commitments or estimates into resolutions.
+    *   **Output Structure:** Strict adherence to the required sections (Summary, Resolutions, Action Items, Risks/Open Issues, Important Timelines, Name Check).
+
+2.  **Analyze the Input Data:**
+    *   **Notice:**
+        *   Project: Retail POS × 鳳梨 Pay Integration.
+        *   Date/Time: 2026/08/27.
+        *   Attendees: 林小安 (Product Manager), 陳柏宇 (Integration Engineer).
+    *   **Transcript Analysis (Deconstruction & Contextualization):**
+
+        *   *Topic:* Client complaint about 12 failed payments.
+        *   *Problem Root Cause:* The client (在地美食早餐店) uses a franchise system with its own store IDs. Phoenix Pay uses merchant/store IDs established during service application. The current data received is the old version, lacking the new store ID. Both systems think they are different stores, but they are the same physical location.
+        *   *Solution:* Need the client's information and Jinniu (金牛) window to compile the latest version of the store ID mapping table, update it, and re-run the test.
+        *   *Prerequisite for Live Environment:* The client must sign a formal contract with Egudo Co. (額度有限公司). Without this, Phoenix Pay cannot get the official merchant data and keys.
+        *   *Testing Process:* After signing/getting the key, the mapping table must be re-run and tested in the formal environment.
+        *   *Timeline/Goal:* The contract validation deadline is August 31st (8月 31 號要驗收).
+        *   *Testing Timeframe:* If the key is obtained, testing in the formal environment might take about "one breakfast time" (a few hours/half a day).
+        *   *Action Items Discussed:* Get the latest mapping table from the client/Jinniu window. Test environment can be re-run now.
+
+3.  **Drafting the Sections (Iterative Refinement):**
+
+    *   **[Summary]:** What happened? Why is it stuck? What's the goal?
+        *   *Draft:* Failed payments due to ID mismatch. Need new mapping table. Formal contract is the final hurdle for live testing.
+        *   *(Refining to 2-4 points):* Focus on the blockage and the path forward.
+
+    *   **[Resolutions]:** Was anything definitively agreed upon?
+        *   *Transcript Check:* They discussed the need for the mapping table and the contract, but they didn't *agree* on a specific action or timeline yet, only discussed the prerequisites. The decision to proceed with testing once the key is obtained is a future possibility, not a current resolution.
+        *   *Conclusion:* No clear resolutions reached in this segment. -> "無".
+
+    *   **[Action Items]:** Who does what?
+        *   *Task 1:* Get the latest mapping table. (Who? The speaker/team needs to ask the client/Jinniu window).
+        *   *Task 2:* Update the system with the new table. (Implied: The team).
+        *   *Task 3:* Test in the formal environment. (Implied: The team, after prerequisites are met).
+        *   *Constraint Check:* Need to assign responsibility. The speaker says, "我去跟他們要" (I will go ask them).
+        *   *Action Item 1:* Get the latest store list from client/Jinniu window. (Responsible: Speaker/Team).
+        *   *Action Item 2:* Sign the formal contract with Egudo Co. (Responsible: Client).
+
+    *   **[Risks/Open Issues]:** What is uncertain?
+        *   The mapping table update and testing depend on the client's cooperation. The formal contract signing is a major dependency.
+
+    *   **[Important Timelines]:** Specific dates mentioned?
+        *   August 31st: Contract validation deadline.
+
+    *   **[Name Check]:** New terms/companies?
+        *   在地美食早餐店 (Client), 額度有限公司, 金牛 (Jinniu), Phoenix Pay.
+
+4.  **Final Review against Constraints (Self-Correction/Polishing):**
+    *   *Tone:* Professional, objective. (Check)
+    *   *Completeness:* Did I miss any constraints? No external info added. (Check)
+    *   *Actionability:* Are the action items clear? Yes, they are tied to specific tasks and dependencies. (Check)
+    *   *Formatting:* Strict adherence to the required markdown structure. (Check)
+
+5.  **Generating the Output.** (This leads to the final provided response.)
