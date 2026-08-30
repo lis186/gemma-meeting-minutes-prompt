@@ -1,0 +1,71 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into concise, professional meeting minutes (Summary, Resolutions, Action Items, Risks/Uncertainties, Timelines, Glossary).
+    *   **Source Material:** Transcript + Glossary.
+    *   **Constraint 1 (Crucial):** All facts, events, subjects, responsibilities, dates, quantities, causality, resolutions, and action items *must* come from the transcript. No external information allowed.
+    *   **Constraint 2 (Glossary Usage):** Use the glossary (`本地智慧有限公司`, `Retail POS`, `鳳梨 Pay`). Only replace names if they are highly confident matches (sound/near sound) AND the replacement doesn't introduce new information or change context.
+    *   **Constraint 3 (Transcript Handling):** Contextually correct obvious ASR errors (e.g., "postg" -> likely related to the system/process). Preserve original terms like "我們," "客戶," "供應商."
+    *   **Constraint 4 (Decision vs. Suggestion):** Only clear agreements/decisions count as Resolutions. Suggestions, estimates, and prerequisites are not resolutions.
+    *   **Constraint 5 (Output Structure):** Specific sections required: Summary, Resolutions, Action Items (Table), Risks/Uncertainties, Timelines, Name Check (Glossary/ASR issues).
+
+2.  **Analyze the Transcript & Glossary:**
+    *   **Glossary:** `本地智慧有限公司`, `Retail POS`, `鳳梨 Pay`.
+    *   **Transcript Scan (Key Points & Terminology):**
+        *   Issue: 12 failed payments from a new trial store.
+        *   Cause: System mismatch (old vs. new merchant codes). `鳳梨 Pay` uses application payment service establishment codes; they have the old comparison table.
+        *   Solution: Need the client's information and `金牛` window to compile the latest merchant list, update the comparison table, and re-run.
+        *   Prerequisite (Crucial): Client must sign the formal contract with `額度有限公司` before getting the official keys/data for `鳳梨 Pay` formal environment.
+        *   Testing: Can re-run in test environment now, but official environment requires the contract/keys.
+        *   Timeline Discussion: If keys are obtained, testing might take "one breakfast time" (quick), but better to allow a day.
+        *   Contract Deadline: Our contract is August 31st (驗收).
+
+3.  **Apply Glossary/ASR Correction & Refinement:**
+    *   "postg" -> Likely refers to the system/process being discussed (payment processing).
+    *   "鳳梨配用的是申請支付服務時建立商戶門市編號" -> This relates to `鳳梨 Pay`.
+    *   "額度有限公司" -> Likely the company mentioned in the context of signing the contract. (Wait, is `額度有限公司` in the glossary? No. I must keep it as transcribed unless contextually certain, but since the transcript uses it and it's a proper noun/company name, I must treat it as is.)
+    *   "金牛窗口" -> Specific internal resource/person. Keep as is.
+
+4.  **Drafting the Sections (Iterative Process):**
+
+    *   **Fact Extraction & Causality:**
+        *   12 failures occurred from a new trial store.
+        *   Cause: Merchant code mismatch (old vs. new).
+        *   Solution path: Get latest list from client/金牛, update, re-run.
+        *   Prerequisite for official testing: Client signs contract with `額度有限公司` and obtains formal keys.
+        *   Contract deadline: August 31st (驗收).
+
+    *   **Summary:** Focus on the core problem and path forward.
+        *   *Draft:* Payment failures due to code mismatch. Need new list/contract signing for official testing.
+        *   *(Refining for conciseness)*
+
+    *   **Resolutions:** Were any decisions made?
+        *   They discussed the path forward (get list, sign contract), but no final agreement on *when* or *how* to proceed was reached. The testing timeline is still speculative ("one breakfast time" vs "a day").
+        *   *Conclusion:* No clear, binding resolutions were reached.
+
+    *   **Action Items:** What needs to be done?
+        *   1. Get the latest merchant list (from client/金牛).
+        *   2. Client needs to sign the contract with `額度有限公司`.
+        *   3. Update/re-run testing (after getting the list and keys).
+
+    *   **Risks/Uncertainties:**
+        *   The official testing timeline depends on the contract signing and key issuance.
+        *   The current mismatch issue needs resolution before official testing can proceed smoothly.
+
+    *   **Timelines:**
+        *   August 31st: Our contract validation/acceptance.
+
+    *   **Name Check:**
+        *   `鳳梨 Pay` (Used in transcript, matches glossary).
+        *   `額度有限公司` (Mentioned, but not in glossary. Must keep as is).
+        *   `金牛窗口` (Internal resource, keep as is).
+
+5.  **Final Review against Constraints:**
+    *   Are all names/terms from the transcript? Yes.
+    *   Is the tone professional and objective? Yes.
+    *   Are prerequisites/suggestions not mistaken for resolutions? Yes (e.g., the testing timeline is still speculative).
+    *   Is the structure correct? Yes.
+
+6.  **Generating the Output.** (Self-Correction: Ensure "鳳梨 Pay" is used correctly as it was in the transcript.) (The term `鳳梨配` appears in the transcript, which is likely a transcription error for `鳳梨 Pay`. I will use the glossary term `鳳梨 Pay` but ensure the context matches.) (The transcript uses "鳳梨配" and "鳳梨 Pay" is in the glossary. I will use `鳳梨 Pay` for consistency, assuming high confidence.)

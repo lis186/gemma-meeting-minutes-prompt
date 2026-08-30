@@ -1,0 +1,71 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into concise, actionable meeting minutes (Summary, Decisions, Action Items, Risks/Uncertainties, Timelines, Name Check).
+    *   **Source Material:** Transcript + Glossary (The glossary is empty in this specific prompt, so I must proceed assuming no formal names need checking unless they appear in the transcript).
+    *   **Crucial Constraint:** *Only* use information present in the transcript. No external knowledge allowed.
+    *   **Tone/Style:** Professional, concise, action-oriented.
+    *   **Specific Sections Required:** Summary (2-4 points), Decisions, Action Items (Table: Responsible | Item | Deadline/Time), Risks/Uncertainties, Important Timelines, Name Check (if applicable).
+    *   **Key Rules:**
+        *   Preserve original context, quantity, and uncertainty.
+        *   No adding external facts or guessing intent.
+        *   "We/Client/Vendor" must be preserved if used in the transcript.
+        *   Decisions must be explicit agreements, not suggestions or estimates.
+        *   Action Items must be singular, actionable tasks.
+
+2.  **Analyze the Transcript (Deconstruction & Initial Draft):**
+    *   *Topic:* Debugging 12 failed transactions from a new trial store.
+    *   *Problem:* The failure is due to the payment function being broken/mismatched. Specifically, the POS uses a franchised system ID, while "Phoenix Pay" (鳳梨配) uses a merchant store ID established during application. The current data received is the old version, lacking the new store/merchant mapping.
+    *   *Root Cause:* The system doesn't recognize that the two IDs belong to the same store because the mapping table is outdated.
+    *   *Solution Path:* Need the client's information and the "Jinniu" (金牛) window to compile the latest store list, update the mapping table, and re-run the test.
+    *   *Prerequisite for Live/Formal Environment:* The client must first sign a formal contract with "Edu Co." (額度有限公司). Without this, they cannot get the official merchant data and keys for Phoenix Pay's formal environment.
+    *   *Testing/Timeline:* Once the contract is signed and official keys are obtained, the mapping must be re-run, and testing in the formal environment begins.
+    *   *Testing Duration Estimate:* If everything goes well, testing might take about one breakfast time (quick). Safer to allow a day.
+    *   *Client Response/Action:* The speaker can inform the client that testing starts upon receiving the key.
+    *   *Contract Deadline:* Our contract validation is August 31st.
+
+3.  **Apply Constraints and Structure the Output:**
+
+    *   **Glossary Check:** No glossary provided. Proceeding with transcript terms.
+    *   **Name Check (Transcript):** "鳳梨配" (Phoenix Pay), "金牛" (Jinniu), "額度有限公司" (Edu Co.). These are proper nouns/company names and must be checked if they were in the glossary. Since no glossary was provided, I treat them as needing verification *if* they were company names/products. Since the prompt implies a glossary exists but didn't provide it, I must assume they are technical terms/names that need to be flagged if they don't fit the "known" context. *Self-Correction: Since I cannot verify them against a non-existent glossary, and they are proper nouns/product names, I must flag them as per the strict instructions.*
+
+    *   **Drafting Sections:**
+
+        *   **Summary (2-4 points):**
+            1.  The 12 failed transactions are due to a mismatch between the POS franchised ID and Phoenix Pay's merchant store ID.
+            2.  The current issue is the lack of an updated mapping table recognizing both IDs belong to the same store.
+            3.  To proceed, the client must provide information/work with Jinniu to update the mapping table.
+            4.  A formal contract with Edu Co. is a prerequisite for testing in the official environment and obtaining necessary keys/data.
+
+        *   **Decisions:**
+            *   No explicit agreement or decision was reached in this transcript. They discussed *how* to proceed, but nothing was definitively agreed upon (e.g., "We agree to wait until X").
+            *   *Result: 無.*
+
+        *   **Action Items (Who | What | When):**
+            1.  Speaker needs to get the latest store list from the client/Jinniu window. (Action: Get info).
+            2.  Client needs to provide information/work with Jinniu to compile the latest store list and update the mapping. (Action: Provide info/update).
+            3.  Client needs to sign the formal contract with Edu Co. (Action: Sign contract).
+            4.  *Refining Action Items:* The speaker's action is to follow up on the list needed for the update.
+
+        *   **Risks/Uncertainties:**
+            1.  The official environment testing depends on the client signing the contract and obtaining the keys/data.
+            2.  The time required for testing in the formal environment is unknown, though estimated to be quick (one breakfast time/a day).
+
+        *   **Important Timelines:**
+            1.  August 31st | Our contract validation date | We (Our side).
+
+        *   **Name Check:**
+            1.  鳳梨配 (Phoenix Pay) - Product/System Name.
+            2.  金牛 (Jinniu) - Entity/Window.
+            3.  額度有限公司 (Edu Co.) - Company Name.
+
+4.  **Final Review against Constraints:**
+    *   Are all names flagged? Yes (assuming they are proper nouns/products).
+    *   Is the tone objective? Yes.
+    *   Are estimates presented as such? Yes (e.g., "one breakfast time").
+    *   Is the contract prerequisite clearly stated? Yes.
+    *   Are all sections present and correctly populated? Yes.
+
+5.  **Generate Output.** (Self-Correction: Ensure the language is highly formal and matches the required structure.)

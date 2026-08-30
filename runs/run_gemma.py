@@ -7,6 +7,8 @@ seed = int(sys.argv[3]) if len(sys.argv) > 3 else 0
 base = pathlib.Path(__file__).resolve().parent.parent  # repo root
 prompt = (base / prompt_file).read_text() if not prompt_file.startswith("/") else pathlib.Path(prompt_file).read_text()
 transcript = (base / "transcript-software.txt").read_text()
+if "{NOTICE_LEXICON}" in prompt:  # ponytail: lexicon-only isolation slot
+    prompt = prompt.replace("{NOTICE_LEXICON}", (base / "meeting-notice-lexicon.txt").read_text().strip())
 if "{NOTICE}" in prompt:  # ponytail: optional meeting-notice slot
     prompt = prompt.replace("{NOTICE}", (base / "meeting-notice.txt").read_text().strip())
 

@@ -1,0 +1,63 @@
+
+Here's a thinking process to arrive at the desired output:
+
+1.  **Analyze the Request and Constraints:**
+    *   **Role:** Meeting Minutes Assistant.
+    *   **Goal:** Convert raw transcript into concise, actionable meeting minutes (Summary, Resolutions, Action Items, Risks/Uncertainties, Timelines, Name Check).
+    *   **Source Material:** Transcript + Glossary (The glossary is empty in this specific prompt, so I must proceed assuming no official terms are provided for replacement, but the *rule* about its use remains).
+    *   **Crucial Constraint:** All facts, events, subjects, responsibilities, dates, quantities, causality, resolutions, and action items *must* come solely from the transcript. No external information allowed.
+    *   **Tone/Style:** Professional, concise, actionable.
+    *   **Specific Outputs Required:** Summary (2-4 points), Resolutions (if any), Action Items (Table: Responsible | Task | Deadline/Timing), Risks/Uncertainties (if any), Important Timelines (Specific format), Name Check (Specific format).
+    *   **Handling Ambiguity:** Contextual correction is allowed (e.g., "下蛋流程" -> "下單流程"), but names/products must be preserved unless contextually clear. If unsure, keep the original text and flag it.
+    *   **Glossary/Name Check:** Since the glossary is empty, all proper nouns (companies, products) must be flagged as "ASR 正字未核實" if they appear in the transcript.
+    *   **Key Principle:** Actions/Deadlines must be explicitly stated and agreed upon. Suggestions/Estimates are *not* resolutions unless confirmed.
+
+2.  **Analyze the Transcript (Deconstruction & Extraction):**
+
+    *   *Transcript Flow:*
+        *   Client is pressing about the delay.
+        *   The issue: 12 failed transactions from a new trial location.
+        *   Cause: The payment system (鳳梨配) uses franchisor codes, but the client's system uses their own location IDs. The current mapping table is old and doesn't include the new store, causing mismatch.
+        *   Solution: Need to get the latest location list from the client and coordinate with "金牛窗口" (Jinniu window/contact) to update the mapping table, then re-run.
+        *   Prerequisite for testing: The client must sign the formal contract with "額度有限公司" (Yudu Co.). Without this, they can't get the formal merchant data/key for testing.
+        *   Testing timeline: After signing and getting the key, the mapping needs to be re-run, then tested in the formal environment.
+        *   Testing duration estimate: If successful, maybe one breakfast time (quick). Safer to allow a day.
+        *   Action/Decision: The speaker can tell the client testing starts upon receiving the key.
+        *   *Crucial Date:* Our contract validation is August 31st (8/31).
+        *   *Action needed:* Need to decide on a target date for the client.
+
+    *   **Identify Key Entities/Terms:**
+        *   鳳梨配 (Fenglipei): Payment system.
+        *   金牛窗口: Contact/Resource needed for the client's data.
+        *   額度有限公司 (Yudu Co.): The company involved in the formal contract signing.
+        *   客戶: Client (the entity needing the service/testing).
+        *   我們: Our company/team.
+        *   12 筆失敗: The specific issue (12 failed transactions).
+        *   8 月 31 日: Contract validation deadline.
+
+    *   **Identify Actions/Decisions:**
+        *   Action 1: Get the latest location list from the client and coordinate with 金牛窗口. (Needed to fix the mapping).
+        *   Action 2: Client must sign the formal contract with 額度有限公司. (Prerequisite for testing).
+        *   Action 3: Once the key is received, mapping must be re-run and tested.
+        *   Action 4: Need to decide on a target date for the client (to manage expectations).
+
+3.  **Drafting the Sections (Applying Constraints):**
+
+    *   **Summary:** Focus on the blockage and the path forward.
+        *   *Draft:* Testing is blocked by two things: the contract and the mapping data. The failed transactions are due to an outdated map. We need the client to sign and provide updated data.
+    *   **Resolutions:** Were any definitive agreements made? No specific date or action was agreed upon, only the *need* for actions. The speaker suggested a path forward but didn't finalize it. -> "無".
+    *   **Action Items:** Who does what?
+        *   *Our Team:* Get the latest mapping list from the client and coordinate with 金牛窗口. (Task: Update map).
+        *   *Client:* Sign the formal contract with 額度有限公司. (Task: Contract).
+        *   *Client:* Provide the latest location list/data. (Task: Data provision).
+    *   **Risks/Uncertainties:** The biggest risk is the dependency chain (Contract -> Key -> Mapping -> Testing).
+    *   **Important Timelines:** Only one hard date mentioned: August 31st.
+    *   **Name Check:** Flag all proper nouns.
+
+4.  **Refining and Formatting (Self-Correction/Review against constraints):**
+
+    *   *Constraint Check:* Did I introduce external info? No. Is the tone professional? Yes. Are all entities preserved? Yes (e.g., "我們," "客戶").
+    *   *Action Item Detail:* The transcript implies the speaker will follow up on getting the list, but it's a joint effort. I must keep the tasks distinct and assign responsibility based on who is performing the action described in the transcript.
+    *   *Refining Action Items:* The speaker says, "我去跟他們要你拿到清單更新完以後..." -> This is the speaker's action. The client needs to provide the data/cooperate with 金牛窗口.
+
+5.  **Final Polish (Generating the Output).** (This leads directly to the final provided response.)
