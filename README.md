@@ -167,6 +167,10 @@ runs/
 - 3 seeds 是重犯率的最小樣本；正式導入前應以 20–30 份真實會議實測。
 - 完整復現受測方（gemma）與審查方（sol）有紀錄；fable 側的改寫過程以 `runs/fable-changelog.md` 摘要保存，原始對話未含在 repo。
 
+## 作者
+
+[Justin Lee](https://github.com/lis186)——[**ccxray**](https://github.com/lis186/ccxray) 的開發者：零設定的 Claude Code／Codex 透明代理，讓你看見每次 API 呼叫的成本、系統提示詞 diff，並在請求送出前攔截編輯。本實驗全程的 token 流向就是這樣看的。`npx ccxray claude` 一行開始。
+
 ## 授權
 
 MIT（見 [LICENSE](LICENSE)）。
